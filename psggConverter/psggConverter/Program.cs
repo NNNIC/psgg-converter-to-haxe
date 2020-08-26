@@ -12,10 +12,8 @@ namespace psggConverter
     {
         static void Main(string[] args)
         {
-            var path = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location),"psggConverterLib.dll");
-            var dll = Assembly.LoadFrom(path);
-            dynamic converter = Activator.CreateInstance(dll.GetType("psggConverterLib.Convert"));
-            converter.TEST();
+            var p = new psggConverterLib.Convert();
+            p.TEST();
         }
     }
 }

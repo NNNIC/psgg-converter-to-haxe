@@ -43,6 +43,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="lib\cf_prepare\CfPrepareControl.cs" />
+    <Compile Include="lib\CommentLine.cs" />
+    <Compile Include="lib\Convert.cs" />
+    <Compile Include="lib\forHx\RefListString.cs" />
+    <Compile Include="lib\Githash.cs" />
+    <Compile Include="lib\LineMacro\LineMacro.cs" />
+    <Compile Include="lib\MacroWork.cs" />
+    <Compile Include="lib\SettingIniWork.cs" />
+    <Compile Include="lib\sm2\InsertCodeControl.cs" />
+    <Compile Include="lib\sm2\InsertCodeControl_created.cs" />
+    <Compile Include="lib\sm\base\StateManager.cs" />
+    <Compile Include="lib\sm\FunctionControl.cs" />
+    <Compile Include="lib\sm\FunctionControl_created.cs" />
+    <Compile Include="lib\sm\IncludeFile.cs" />
+    <Compile Include="lib\sm\MacroControl.cs" />
+    <Compile Include="lib\sm\MacroControl_created.cs" />
+    <Compile Include="lib\sm\SourceControl.cs" />
+    <Compile Include="lib\sm\SourceControl_created.cs" />
+    <Compile Include="lib\Util\IniUtil.cs" />
+    <Compile Include="lib\Util\RegexUtil.cs" />
+    <Compile Include="lib\Util\SortUtil.cs" />
+    <Compile Include="lib\Util\StringUtil.cs" />
+    <Compile Include="lib\ver.cs" />
+    <Compile Include="lib\wordstrage\Store.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
