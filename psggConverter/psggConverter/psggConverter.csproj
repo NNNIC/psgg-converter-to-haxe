@@ -62,6 +62,7 @@
     <Compile Include="lib\sm\SourceControl.cs" />
     <Compile Include="lib\sm\SourceControl_created.cs" />
     <Compile Include="lib\util\IniUtil.cs" />
+    <Compile Include="lib\util\PsggFileUtil.cs" />
     <Compile Include="lib\util\RegexUtil.cs" />
     <Compile Include="lib\util\SortUtil.cs" />
     <Compile Include="lib\util\StringUtil.cs" />
