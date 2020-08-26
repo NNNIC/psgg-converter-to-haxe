@@ -61,10 +61,10 @@
     <Compile Include="lib\sm\MacroControl_created.cs" />
     <Compile Include="lib\sm\SourceControl.cs" />
     <Compile Include="lib\sm\SourceControl_created.cs" />
-    <Compile Include="lib\Util\IniUtil.cs" />
-    <Compile Include="lib\Util\RegexUtil.cs" />
-    <Compile Include="lib\Util\SortUtil.cs" />
-    <Compile Include="lib\Util\StringUtil.cs" />
+    <Compile Include="lib\util\IniUtil.cs" />
+    <Compile Include="lib\util\RegexUtil.cs" />
+    <Compile Include="lib\util\SortUtil.cs" />
+    <Compile Include="lib\util\StringUtil.cs" />
     <Compile Include="lib\ver.cs" />
     <Compile Include="lib\wordstrage\Store.cs" />
     <Compile Include="Program.cs" />

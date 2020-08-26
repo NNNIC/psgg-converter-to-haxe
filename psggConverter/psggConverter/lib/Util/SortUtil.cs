@@ -4,16 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-//Haxeへの変換時、Sortができなかったための対処
-public class SortUtil
+namespace util
 {
-    public static List<string> Sort(List<string> l)
+    //Haxeへの変換時、Sortができなかったための対処
+    public class SortUtil
     {
-        var l2 = new List<string>();
-        l2.AddRange(l);
-        l2.Sort();
-        return l2;
+        public static List<string> Sort(List<string> l)
+        {
+            var l2 = new List<string>();
+            l2.AddRange(l);
+            l2.Sort();
+            return l2;
+        }
     }
-}
 
+}

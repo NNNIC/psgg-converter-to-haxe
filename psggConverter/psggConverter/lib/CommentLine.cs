@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using System.IO;
 
-namespace psggConverterLib
+namespace lib
 {
     public partial class Convert
     {

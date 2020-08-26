@@ -5,8 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using System.IO;
+using util;
 
-namespace psggConverterLib
+namespace lib
 {
 public partial class CfPrepareControl  {
    

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using util;
 
-namespace psggConverterLib
+namespace lib
 {
     // call from macrocontrol and sourcecontrol
     public class MacroWork

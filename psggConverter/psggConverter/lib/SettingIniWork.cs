@@ -5,18 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace psggConverterLib
+namespace lib
 {
     public class SettingIniWork
     {
         static Hashtable m_ht;
         public static void Init(string s)
         {
-            m_ht = IniUtil.CreateHashtable(s);
+            m_ht = util.IniUtil.CreateHashtable(s);
         }
         public static string Get(string category, string key)
         {
-            return IniUtil.GetValueFromHashtable(category,key,m_ht);
+            return util.IniUtil.GetValueFromHashtable(category,key,m_ht);
         }
     }
 }

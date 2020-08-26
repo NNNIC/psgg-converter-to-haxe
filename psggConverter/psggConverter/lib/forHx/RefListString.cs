@@ -4,8 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public class RefListString
+namespace lib
 {
-    public List<string> list;
-}
+    public class RefListString
+    {
+        public List<string> list;
+    }
 
+}

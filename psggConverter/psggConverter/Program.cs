@@ -12,7 +12,7 @@ namespace psggConverter
     {
         static void Main(string[] args)
         {
-            var p = new psggConverterLib.Convert();
+            var p = new lib.Convert();
             p.TEST();
         }
     }

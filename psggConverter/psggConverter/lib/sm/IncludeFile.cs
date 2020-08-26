@@ -5,42 +5,45 @@ using System.Text;
 using System.IO;
 using System.Threading.Tasks;
 
-
-public class IncludeFile
+namespace lib
 {
-    public static string readfile(psggConverterLib.Convert g, string matchstr,string file, string enc)
+    public class IncludeFile
     {
-        if(string.IsNullOrEmpty(enc)) {
-            enc = "utf-8";
-        }
-        var filepath = Path.Combine(g.INCDIR,file);
-        if(!File.Exists(filepath))
+        public static string readfile(lib.Convert g, string matchstr, string file, string enc)
         {
-            filepath = Path.Combine(g.XLSDIR,file);
-            if(!File.Exists(filepath))
+            if (string.IsNullOrEmpty(enc))
             {
-                filepath = Path.Combine(g.GENDIR,file);
+                enc = "utf-8";
             }
-        }
-        var text = string.Empty;
-        if(File.Exists(filepath))
-        {
-            try
+            var filepath = Path.Combine(g.INCDIR, file);
+            if (!File.Exists(filepath))
             {
-                text = File.ReadAllText(filepath,Encoding.GetEncoding(enc));
+                filepath = Path.Combine(g.XLSDIR, file);
+                if (!File.Exists(filepath))
+                {
+                    filepath = Path.Combine(g.GENDIR, file);
+                }
             }
-            catch(SystemException e)
+            var text = string.Empty;
+            if (File.Exists(filepath))
             {
-                //text = string.Format("(error: can not read : {0})",e.Message);
-                text = "(error: can not read : " + e.Message;
+                try
+                {
+                    text = File.ReadAllText(filepath, Encoding.GetEncoding(enc));
+                }
+                catch (SystemException e)
+                {
+                    //text = string.Format("(error: can not read : {0})",e.Message);
+                    text = "(error: can not read : " + e.Message;
+                }
             }
+            else
+            {
+                text = "(error: file not found : " + filepath + ")";
+            }
+            return text;
         }
-        else
-        {
-            text = "(error: file not found : " + filepath + ")";
-        }
-        return text;
+
     }
 
 }
-
