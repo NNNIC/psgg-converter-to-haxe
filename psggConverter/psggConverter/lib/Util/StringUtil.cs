@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 
 
-namespace util
+namespace lib.util
 {
     public class StringUtil
     {

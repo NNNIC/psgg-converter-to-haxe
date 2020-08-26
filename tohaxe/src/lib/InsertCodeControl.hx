@@ -38,8 +38,8 @@ class InsertCodeControl extends lib.StateManager
                 m_enc = new psgg.HxUTF8Encoding(bom);
             }
             m_src = psgg.HxFile.ReadAllText_String_Encoding(m_filepath, m_enc);
-            m_bl = util.StringUtil.FindNewLineChar(m_src);
-            m_lines = util.StringUtil.SplitTrimKeepSpace(m_src, m_bl.charCodeAt(0));
+            m_bl = lib.util.StringUtil.FindNewLineChar(m_src);
+            m_lines = lib.util.StringUtil.SplitTrimKeepSpace(m_src, m_bl.charCodeAt(0));
         }
         catch (e:system.SystemException)
         {
@@ -83,14 +83,14 @@ class InsertCodeControl extends lib.StateManager
     {
         var markindex:Int = s.indexOf(MARK_START);
         var ns:String = s.substr(markindex + MARK_START.length);
-        var indentstr:String = util.RegexUtil.Get1stMatch("indent\\(\\d+\\)", ns);
+        var indentstr:String = psgg.HxRegexUtil.Get1stMatch("indent\\(\\d+\\)", ns);
         if (!system.Cs2Hx.IsNullOrEmpty(indentstr))
         {
-            var numstr:String = util.RegexUtil.Get1stMatch("\\d+", indentstr);
+            var numstr:String = psgg.HxRegexUtil.Get1stMatch("\\d+", indentstr);
             m_indent = Std.parseInt(numstr);
             ns = ns.replace(indentstr, "");
         }
-        m_command = util.RegexUtil.Get1stMatch("\\$.+\\$\\s*$", ns);
+        m_command = psgg.HxRegexUtil.Get1stMatch("\\$.+\\$\\s*$", ns);
         if (system.Cs2Hx.IsNullOrEmpty(m_command))
         {
             m_error = "Cannot find command : " + system.Cs2Hx.NullCheck(s);
@@ -115,7 +115,7 @@ class InsertCodeControl extends lib.StateManager
             }
         } //end for
         {
-            var outlines:Array<String> = util.StringUtil.SplitTrimKeepSpace(m_output, m_bl.charCodeAt(0));
+            var outlines:Array<String> = lib.util.StringUtil.SplitTrimKeepSpace(m_output, m_bl.charCodeAt(0));
             system.Cs2Hx.AddRange(tmp, outlines);
         }
         { //for

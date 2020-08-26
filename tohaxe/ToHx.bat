@@ -6,10 +6,8 @@ echo :
 echo : convert
 echo :
 
-rd /s /q src\psggConverter 2>nul
+rd /s /q src\psggconverter 2>nul
 rd /s /q src\lib 2>nul
-rd /s /q src\util 2>nul
-rd /s /q src\wordstrage 2>nul
 del /f src\Constructors.hx 2>nul
 ::pause
 

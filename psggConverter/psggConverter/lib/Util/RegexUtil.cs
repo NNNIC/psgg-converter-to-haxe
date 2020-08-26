@@ -7,7 +7,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 
-namespace util
+namespace lib.util
 {
     public class RegexUtil
     {

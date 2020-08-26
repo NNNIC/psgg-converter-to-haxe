@@ -151,7 +151,7 @@ class CfPrepareControl
         if (bFirst)
         {
             m_exstr = null;
-            var s:String = util.RegexUtil.Get1stMatch("==\\x22[^\\x22]*?\\x22$", m_target);
+            var s:String = psgg.HxRegexUtil.Get1stMatch("==\\x22[^\\x22]*?\\x22$", m_target);
             if (!system.Cs2Hx.IsNullOrEmpty(s))
             {
                 m_eqstr = system.Cs2Hx.Trim_(s.substr(2), [ 34 ]);
@@ -246,7 +246,7 @@ class CfPrepareControl
             {
                 m_regex = m_regex.substr(1);
                 m_regex = m_regex.substr(0, m_regex.length - 1);
-                var match:String = util.RegexUtil.Get1stMatch(m_regex, m_val);
+                var match:String = psgg.HxRegexUtil.Get1stMatch(m_regex, m_val);
                 m_bValid = !system.Cs2Hx.IsNullOrEmpty(match);
             }
             else
@@ -274,7 +274,7 @@ class CfPrepareControl
             }
             else
             {
-                m_exstr = util.RegexUtil.Get1stMatch(m_regex, m_val);
+                m_exstr = psgg.HxRegexUtil.Get1stMatch(m_regex, m_val);
             }
         }
         if (!HasNextState())
@@ -287,7 +287,7 @@ class CfPrepareControl
         if (bFirst)
         {
             var findindex:CsRef<Int> = new CsRef<Int>(-1);
-            m_targetlines = util.StringUtil.FindMatchedLines2(m_lines, "\x3c\x3c\x3c\x3f", "\x3e\x3e\x3e", findindex);
+            m_targetlines = lib.util.StringUtil.FindMatchedLines2(m_lines, "\x3c\x3c\x3c\x3f", "\x3e\x3e\x3e", findindex);
             m_findindex = findindex.Value;
         }
         if (m_targetlines == null)
@@ -360,7 +360,7 @@ class CfPrepareControl
     {
         if (bFirst)
         {
-            m_itemname = util.RegexUtil.Get1stMatch("[0-9a-zA-Z_\\-]+", m_target);
+            m_itemname = psgg.HxRegexUtil.Get1stMatch("[0-9a-zA-Z_\\-]+", m_target);
             m_regex = m_target.substr(m_itemname.length);
             m_val = m_parent.getString2(m_state, m_itemname);
         }
@@ -373,7 +373,7 @@ class CfPrepareControl
     {
         if (bFirst)
         {
-            m_itemname = util.RegexUtil.Get1stMatch("[0-9a-zA-Z_\\-]+", m_target);
+            m_itemname = psgg.HxRegexUtil.Get1stMatch("[0-9a-zA-Z_\\-]+", m_target);
             m_regex = m_target.substr(m_itemname.length);
             m_val = m_parent.getString2(m_state, m_itemname);
         }
@@ -452,7 +452,7 @@ class CfPrepareControl
     {
         if (bFirst)
         {
-            m_lines = util.StringUtil.ReplaceLines(m_lines, m_findindex, m_size, m_targetlines);
+            m_lines = lib.util.StringUtil.ReplaceLines(m_lines, m_findindex, m_size, m_targetlines);
         }
         if (!HasNextState())
         {
@@ -492,7 +492,7 @@ class CfPrepareControl
     {
         if (bFirst)
         {
-            var dqw:String = util.RegexUtil.Get1stMatch("\\x22.*\\x22", m_target);
+            var dqw:String = psgg.HxRegexUtil.Get1stMatch("\\x22.*\\x22", m_target);
             m_val = system.Cs2Hx.Trim_(dqw, [ 34 ]);
             m_regex = m_target.substr(dqw.length);
         }
@@ -505,7 +505,7 @@ class CfPrepareControl
     {
         if (bFirst)
         {
-            var dqw:String = util.RegexUtil.Get1stMatch("\\x22.*\\x22", m_target);
+            var dqw:String = psgg.HxRegexUtil.Get1stMatch("\\x22.*\\x22", m_target);
             m_val = system.Cs2Hx.Trim_(dqw, [ 34 ]);
             m_regex = m_target.substr(dqw.length);
         }
@@ -518,7 +518,7 @@ class CfPrepareControl
     {
         if (bFirst)
         {
-            m_target = util.RegexUtil.Get1stMatch("\\<\\<\\<\\?.+\\s*$", m_line0);
+            m_target = psgg.HxRegexUtil.Get1stMatch("\\<\\<\\<\\?.+\\s*$", m_line0);
             m_target = system.Cs2Hx.Trim(m_target.substr(4));
         }
         if (!HasNextState())

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using util;
+using lib.util;
 namespace lib
 {
     public partial class MacroControl

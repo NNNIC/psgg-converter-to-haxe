@@ -31,10 +31,10 @@ class FunctionControl extends lib.StateManager
     }
     function split_buf():Void
     {
-        var newlinechar:String = util.StringUtil.FindNewLineChar(m_buf);
+        var newlinechar:String = lib.util.StringUtil.FindNewLineChar(m_buf);
         if (newlinechar != null)
         {
-            m_lines = util.StringUtil.SplitTrimEnd(m_buf, 10);
+            m_lines = lib.util.StringUtil.SplitTrimEnd(m_buf, 10);
             m_OkNG = true;
         }
         else if (!system.Cs2Hx.IsNullOrEmpty(m_buf))
@@ -120,8 +120,8 @@ class FunctionControl extends lib.StateManager
     }
     function postprocess():Void
     {
-        m_lines = util.StringUtil.CutEmptyLines_ListString(m_lines);
-        m_result_src = util.StringUtil.LineToBuf(m_lines, G.NEWLINECHAR);
+        m_lines = lib.util.StringUtil.CutEmptyLines_ListString(m_lines);
+        m_result_src = lib.util.StringUtil.LineToBuf(m_lines, G.NEWLINECHAR);
     }
     function br_OK(st:(Bool -> Void)):Void
     {

@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text;
 using System.Collections.Generic;
-using util;
+using lib.util;
 //using psggConverterLib;
 
 namespace lib

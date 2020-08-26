@@ -102,7 +102,7 @@ class Convert
                 var state:String = getChartFunc(STATE_ROW, c);
                 if (!system.Cs2Hx.IsNullOrEmpty(state))
                 {
-                    if (util.RegexUtil.Get1stMatch("^[a-zA-Z_][a-zA-Z_0-9]*$", state) == state)
+                    if (psgg.HxRegexUtil.Get1stMatch("^[a-zA-Z_][a-zA-Z_0-9]*$", state) == state)
                     {
                         state_list.push(state);
                         state_col_list.push(c);
@@ -227,7 +227,7 @@ class Convert
             return false;
         }
         var findindex:CsRef<Int> = new CsRef<Int>(-1);
-        var targetlines:Array<String> = util.StringUtil.FindMatchedLines(lines.Value, "<<<?", ">>>", findindex);
+        var targetlines:Array<String> = lib.util.StringUtil.FindMatchedLines(lines.Value, "<<<?", ">>>", findindex);
         if (targetlines == null)
         {
             return false;
@@ -237,7 +237,7 @@ class Convert
             return throw new system.SystemException("Unexpected! {A6446D1F-DFD0-4A63-93C7-299265119AC7}");
         }
         var line0:String = targetlines[0];
-        var targetname:String = util.RegexUtil.Get1stMatch("(?!\\<\\<\\<\\?)(\\w+)", line0);
+        var targetname:String = psgg.HxRegexUtil.Get1stMatch("(?!\\<\\<\\<\\?)(\\w+)", line0);
         if (isExist(state, targetname))
         {
             var size:Int = targetlines.length;
@@ -252,7 +252,7 @@ class Convert
                 }
                 size = 1;
             }
-            lines.Value = util.StringUtil.ReplaceLines(lines.Value, findindex.Value, size, targetlines);
+            lines.Value = lib.util.StringUtil.ReplaceLines(lines.Value, findindex.Value, size, targetlines);
             return true;
         }
         else
@@ -268,7 +268,7 @@ class Convert
             return false;
         }
         var findindex:CsRef<Int> = new CsRef<Int>(-1);
-        var targetlines:Array<String> = util.StringUtil.FindMatchedLines2(lines.Value, "<<<?", ">>>", findindex);
+        var targetlines:Array<String> = lib.util.StringUtil.FindMatchedLines2(lines.Value, "<<<?", ">>>", findindex);
         if (targetlines == null)
         {
             return false;
@@ -282,17 +282,17 @@ class Convert
         var itemname:String = "";
         var val:String = "";
         var regex:String = "";
-        var target:String = util.RegexUtil.Get1stMatch("\\<\\<\\<\\?.+\\s*$", line0);
+        var target:String = psgg.HxRegexUtil.Get1stMatch("\\<\\<\\<\\?.+\\s*$", line0);
         target = system.Cs2Hx.Trim(target.substr(4));
         if (target.charCodeAt(0) == 34)
         {
-            var dqw:String = util.RegexUtil.Get1stMatch("\\x22.*\\x22", target);
+            var dqw:String = psgg.HxRegexUtil.Get1stMatch("\\x22.*\\x22", target);
             val = system.Cs2Hx.Trim_(dqw, [ 34 ]);
             regex = target.substr(dqw.length);
         }
         else
         {
-            itemname = util.RegexUtil.Get1stMatch("[0-9a-zA-Z_\\-]+", target);
+            itemname = psgg.HxRegexUtil.Get1stMatch("[0-9a-zA-Z_\\-]+", target);
             regex = target.substr(itemname.length);
             val = getString2(state, itemname);
         }
@@ -303,7 +303,7 @@ class Convert
             {
                 regex = regex.substr(1);
                 regex = regex.substr(0, regex.length - 1);
-                var match:String = util.RegexUtil.Get1stMatch(regex, val);
+                var match:String = psgg.HxRegexUtil.Get1stMatch(regex, val);
                 bValid = !system.Cs2Hx.IsNullOrEmpty(match);
             }
             else
@@ -326,7 +326,7 @@ class Convert
                 }
                 size = 1;
             }
-            lines.Value = util.StringUtil.ReplaceLines(lines.Value, findindex.Value, size, targetlines);
+            lines.Value = lib.util.StringUtil.ReplaceLines(lines.Value, findindex.Value, size, targetlines);
             return true;
         }
         else
@@ -364,7 +364,7 @@ class Convert
             }
             var tstate:String = state;
             var line:String = lines[i];
-            var targetvalue:String = util.RegexUtil.Get1stMatch("\\[\\[.*?\\]\\]", line);
+            var targetvalue:String = psgg.HxRegexUtil.Get1stMatch("\\[\\[.*?\\]\\]", line);
             if (system.Cs2Hx.IsNullOrEmpty(targetvalue))
             {
                 continue;
@@ -372,7 +372,7 @@ class Convert
             var tmp_targetvalue:String = targetvalue;
             if (system.Cs2Hx.StartsWith(tmp_targetvalue, "[[::"))
             {
-                tstate = util.RegexUtil.Get1stMatch("^" + system.Cs2Hx.NullCheck(util.RegexUtil.VARNAME_PATTERN), tmp_targetvalue.substr(4));
+                tstate = psgg.HxRegexUtil.Get1stMatch("^" + system.Cs2Hx.NullCheck(psgg.HxRegexUtil.GetVerNamePattern()), tmp_targetvalue.substr(4));
                 if (system.Cs2Hx.IsNullOrEmpty(tstate))
                 {
                     continue;
@@ -394,16 +394,16 @@ class Convert
                 tmp_targetvalue = tmp_targetvalue.substr(1);
                 tmp_targetvalue = "[[" + system.Cs2Hx.NullCheck(tmp_targetvalue);
             }
-            var name:String = util.RegexUtil.Get1stMatch("[\\!0-9a-zA-Z_\\-]+", tmp_targetvalue);
+            var name:String = psgg.HxRegexUtil.Get1stMatch("[\\!0-9a-zA-Z_\\-]+", tmp_targetvalue);
             var macroname:String = "";
             var linenum:Int = -1;
             var argnum:Int = -1;
-            var num_colon:Int = util.StringUtil.CountChar(tmp_targetvalue, 58);
+            var num_colon:Int = lib.util.StringUtil.CountChar(tmp_targetvalue, 58);
             if (num_colon >= 1)
             {
                 try
                 {
-                    var linenumstr:String = util.RegexUtil.GetNthMatch(":\\d+", tmp_targetvalue, 1);
+                    var linenumstr:String = psgg.HxRegexUtil.GetNthMatch(":\\d+", tmp_targetvalue, 1);
                     linenumstr = linenumstr.substr(1);
                     linenum = Std.parseInt(linenumstr);
                 }
@@ -416,7 +416,7 @@ class Convert
             {
                 try
                 {
-                    var argnumstr:String = util.RegexUtil.GetNthMatch(":\\d+", tmp_targetvalue, 2);
+                    var argnumstr:String = psgg.HxRegexUtil.GetNthMatch(":\\d+", tmp_targetvalue, 2);
                     argnumstr = argnumstr.substr(1);
                     argnum = Std.parseInt(argnumstr);
                 }
@@ -428,7 +428,7 @@ class Convert
             macroname = name;
             if (system.Cs2Hx.StringContains(tmp_targetvalue, "->@"))
             {
-                macroname = util.RegexUtil.Get1stMatch("->@.+?]", tmp_targetvalue);
+                macroname = psgg.HxRegexUtil.Get1stMatch("->@.+?]", tmp_targetvalue);
                 macroname = macroname.substr(3);
                 macroname = macroname.substr(0, macroname.length - 1);
                 if (argnum != -1)
@@ -449,17 +449,17 @@ class Convert
             var val:String = getString2(tstate, name);
             if (!system.Cs2Hx.IsNullOrEmpty(val) && linenum >= 0)
             {
-                var tmplines:Array<String> = util.StringUtil.SplitTrimEnd(val, util.StringUtil._0a.charCodeAt(0));
+                var tmplines:Array<String> = lib.util.StringUtil.SplitTrimEnd(val, lib.util.StringUtil._0a.charCodeAt(0));
                 val = linenum < tmplines.length ? tmplines[linenum] : "";
             }
             if (!system.Cs2Hx.IsNullOrEmpty(val) && argnum >= 0)
             {
-                var args:Array<String> = util.StringUtil.SplittComma_And_ApiArges(val);
+                var args:Array<String> = lib.util.StringUtil.SplittComma_And_ApiArges(val);
                 val = argnum < args.length ? args[argnum] : "";
             }
             var replacevalue:String = val;
             var replacevalue3:String = get_line_macro_value(macroname, replacevalue);
-            var tmplines2:Array<String> = util.StringUtil.ReplaceWordsInLine(line, targetvalue, replacevalue3);
+            var tmplines2:Array<String> = lib.util.StringUtil.ReplaceWordsInLine(line, targetvalue, replacevalue3);
             lines.splice(i, 1);
             system.Cs2Hx.InsertRange(lines, i, tmplines2);
             r.list = lines;
@@ -566,7 +566,7 @@ class Convert
         {
             return s;
         }
-        var lines:Array<String> = util.StringUtil.SplitTrim(s, 10);
+        var lines:Array<String> = lib.util.StringUtil.SplitTrim(s, 10);
         var result:Array<String> = new Array<String>();
         var linenum:Int = 0;
         for (l in lines)
@@ -575,12 +575,12 @@ class Convert
             {
                 continue;
             }
-            var args:Array<String> = util.StringUtil.SplittComma_And_ApiArges(l);
+            var args:Array<String> = lib.util.StringUtil.SplittComma_And_ApiArges(l);
             var text:String = lib.MacroWork.Convert(macrovalue, linenum, args, true);
             result.push(text);
             linenum++;
         }
-        return util.StringUtil.LineToBuf(result, NEWLINECHAR);
+        return lib.util.StringUtil.LineToBuf(result, NEWLINECHAR);
     }
     public function new()
     {

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 /*
     copy from StateViewer.WordStrage.Store.cs
 */
-namespace wordstrage
+namespace lib.wordstrage
 {
     public class Store
     {

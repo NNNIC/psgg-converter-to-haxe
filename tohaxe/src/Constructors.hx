@@ -24,13 +24,13 @@ import lib.SettingIniWork;
 import lib.SourceControl;
 import lib.SourceControl_MODE;
 import lib.StateManager;
+import lib.util.IniUtil;
+import lib.util.RegexUtil;
+import lib.util.SortUtil;
+import lib.util.StringUtil;
 import lib.Ver;
+import lib.wordstrage.Store;
 import psggconverter.Program;
-import util.IniUtil;
-import util.RegexUtil;
-import util.SortUtil;
-import util.StringUtil;
-import wordstrage.Store;
 import system.TimeSpan;
 class Constructors
 {

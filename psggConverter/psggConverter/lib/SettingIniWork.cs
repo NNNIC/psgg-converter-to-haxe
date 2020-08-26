@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using HT = System.Collections.Generic.Dictionary<string, object>;
 namespace lib
 {
     public class SettingIniWork
     {
-        static Hashtable m_ht;
+        static HT m_ht;
         public static void Init(string s)
         {
             m_ht = util.IniUtil.CreateHashtable(s);

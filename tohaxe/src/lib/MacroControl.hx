@@ -61,7 +61,7 @@ class MacroControl extends lib.StateManager
             var enc:String = m_mw.GetIncludeFileEnc();
             var text:String = lib.IncludeFile.readfile(G, matchstr, file, enc);
             m_resultlines.push(G.GetComment(" #start include -" + system.Cs2Hx.NullCheck(file)));
-            var tmplines:Array<String> = util.StringUtil.ReplaceWordsInLine(m_line, matchstr, text);
+            var tmplines:Array<String> = lib.util.StringUtil.ReplaceWordsInLine(m_line, matchstr, text);
             system.Cs2Hx.AddRange(m_resultlines, tmplines);
             m_resultlines.push(G.GetComment(" #end include -" + system.Cs2Hx.NullCheck(file)));
             m_bDone = true;
@@ -74,7 +74,7 @@ class MacroControl extends lib.StateManager
         {
             var matchstr:String = m_mw.GetMatchStr();
             var text:String = G.PREFIX;
-            var tmplines:Array<String> = util.StringUtil.ReplaceWordsInLine(m_line, matchstr, text);
+            var tmplines:Array<String> = lib.util.StringUtil.ReplaceWordsInLine(m_line, matchstr, text);
             system.Cs2Hx.AddRange(m_resultlines, tmplines);
             m_bDone = true;
         }
@@ -86,31 +86,31 @@ class MacroControl extends lib.StateManager
         {
             var matchstr:String = m_mw.GetMatchStr();
             var text:String = G.STATEMACHINE;
-            var tmplines:Array<String> = util.StringUtil.ReplaceWordsInLine(m_line, matchstr, text);
+            var tmplines:Array<String> = lib.util.StringUtil.ReplaceWordsInLine(m_line, matchstr, text);
             system.Cs2Hx.AddRange(m_resultlines, tmplines);
             m_bDone = true;
         }
         else if (m_mw.Is_state_machine())
         {
             var matchstr:String = m_mw.GetMatchStr();
-            var text:String = util.StringUtil.convert_to_snake_word_and_lower(G.STATEMACHINE);
-            var tmplines:Array<String> = util.StringUtil.ReplaceWordsInLine(m_line, matchstr, text);
+            var text:String = lib.util.StringUtil.convert_to_snake_word_and_lower(G.STATEMACHINE);
+            var tmplines:Array<String> = lib.util.StringUtil.ReplaceWordsInLine(m_line, matchstr, text);
             system.Cs2Hx.AddRange(m_resultlines, tmplines);
             m_bDone = true;
         }
         else if (m_mw.Is_stateMachine())
         {
             var matchstr:String = m_mw.GetMatchStr();
-            var text:String = util.StringUtil.convert_to_camel_word(G.STATEMACHINE, false);
-            var tmplines:Array<String> = util.StringUtil.ReplaceWordsInLine(m_line, matchstr, text);
+            var text:String = lib.util.StringUtil.convert_to_camel_word(G.STATEMACHINE, false);
+            var tmplines:Array<String> = lib.util.StringUtil.ReplaceWordsInLine(m_line, matchstr, text);
             system.Cs2Hx.AddRange(m_resultlines, tmplines);
             m_bDone = true;
         }
         else if (m_mw.Is_StateMachine())
         {
             var matchstr:String = m_mw.GetMatchStr();
-            var text:String = util.StringUtil.convert_to_camel_word(G.STATEMACHINE, true);
-            var tmplines:Array<String> = util.StringUtil.ReplaceWordsInLine(m_line, matchstr, text);
+            var text:String = lib.util.StringUtil.convert_to_camel_word(G.STATEMACHINE, true);
+            var tmplines:Array<String> = lib.util.StringUtil.ReplaceWordsInLine(m_line, matchstr, text);
             system.Cs2Hx.AddRange(m_resultlines, tmplines);
             m_bDone = true;
         }
@@ -136,7 +136,7 @@ class MacroControl extends lib.StateManager
                 text = lib.MacroWork.Convert(text, 0, m_mw.GetArgValueList());
             }
         }
-        var tmplines:Array<String> = util.StringUtil.ReplaceWordsInLine(m_line, matchstr, text);
+        var tmplines:Array<String> = lib.util.StringUtil.ReplaceWordsInLine(m_line, matchstr, text);
         system.Cs2Hx.AddRange(m_resultlines, tmplines);
     }
     function add_restlines():Void

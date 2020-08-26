@@ -43,7 +43,7 @@ class MacroWork
     }
     public function CheckMacro(buf:String):Bool
     {
-        var match:String = util.RegexUtil.Get1stMatch(m_includepattern, buf);
+        var match:String = psgg.HxRegexUtil.Get1stMatch(m_includepattern, buf);
         if (!system.Cs2Hx.IsNullOrEmpty(match))
         {
             m_bValid = true;
@@ -53,7 +53,7 @@ class MacroWork
         }
         if (!m_bValid)
         {
-            match = util.RegexUtil.Get1stMatch(m_prefixpattern, buf);
+            match = psgg.HxRegexUtil.Get1stMatch(m_prefixpattern, buf);
             if (!system.Cs2Hx.IsNullOrEmpty(match))
             {
                 m_bValid = true;
@@ -63,7 +63,7 @@ class MacroWork
         }
         if (!m_bValid)
         {
-            match = util.RegexUtil.Get1stMatch(m_statemachinepattern, buf);
+            match = psgg.HxRegexUtil.Get1stMatch(m_statemachinepattern, buf);
             if (!system.Cs2Hx.IsNullOrEmpty(match))
             {
                 m_bValid = true;
@@ -73,7 +73,7 @@ class MacroWork
         }
         if (!m_bValid)
         {
-            match = util.RegexUtil.Get1stMatch(m_state_machinepattern, buf);
+            match = psgg.HxRegexUtil.Get1stMatch(m_state_machinepattern, buf);
             if (!system.Cs2Hx.IsNullOrEmpty(match))
             {
                 m_bValid = true;
@@ -83,7 +83,7 @@ class MacroWork
         }
         if (!m_bValid)
         {
-            match = util.RegexUtil.Get1stMatch(m_stateMachinePattern, buf);
+            match = psgg.HxRegexUtil.Get1stMatch(m_stateMachinePattern, buf);
             if (!system.Cs2Hx.IsNullOrEmpty(match))
             {
                 m_bValid = true;
@@ -93,7 +93,7 @@ class MacroWork
         }
         if (!m_bValid)
         {
-            match = util.RegexUtil.Get1stMatch(m_StateMachinePattern, buf);
+            match = psgg.HxRegexUtil.Get1stMatch(m_StateMachinePattern, buf);
             if (!system.Cs2Hx.IsNullOrEmpty(match))
             {
                 m_bValid = true;
@@ -103,7 +103,7 @@ class MacroWork
         }
         if (!m_bValid)
         {
-            match = util.RegexUtil.Get1stMatch(m_macropattern, buf);
+            match = psgg.HxRegexUtil.Get1stMatch(m_macropattern, buf);
             if (!system.Cs2Hx.IsNullOrEmpty(match))
             {
                 m_bValid = true;
@@ -141,7 +141,7 @@ class MacroWork
         var api:CsRef<String> = new CsRef<String>(null);
         var args:CsRef<Array<String>> = new CsRef<Array<String>>(null);
         var error:CsRef<String> = new CsRef<String>(null);
-        util.StringUtil.SplitApiArges(m_macrovalue, api, args, error);
+        lib.util.StringUtil.SplitApiArges(m_macrovalue, api, args, error);
         m_api = api.Value;
         if (args.Value == null)
         {
@@ -208,11 +208,11 @@ class MacroWork
         {
             return "<!!" + system.Cs2Hx.NullCheck(system.Cs2Hx.Trim_(argstr.replace("{%", "//"), [ 60, 62 ])) + "(error:no args in macro)!!>";
         }
-        if (!util.RegexUtil.IsMatch(m_argpattern, argstr))
+        if (!psgg.HxRegexUtil.IsMatch(m_argpattern, argstr))
         {
             return throw new system.SystemException("Unexpected! {0A4A6F44-838E-44D4-8CCA-873C26573E6B}");
         }
-        var numstr:String = util.RegexUtil.Get1stMatch("\\d+", argstr);
+        var numstr:String = psgg.HxRegexUtil.Get1stMatch("\\d+", argstr);
         var num:Int = Std.parseInt(numstr);
         var bDqOff:Bool = system.Cs2Hx.StringContains(argstr, "~");
         var v:String = "";
@@ -252,14 +252,14 @@ class MacroWork
             {
                 return throw new system.SystemException("Unexpected! {710FA2E8-7740-43F9-8A26-703AF71085C6}\n" + system.Cs2Hx.NullCheck(src) + " #" + Std.string(num));
             }
-            var match:String = util.RegexUtil.Get1stMatch(m_argpattern, src);
+            var match:String = psgg.HxRegexUtil.Get1stMatch(m_argpattern, src);
             if (!system.Cs2Hx.IsNullOrEmpty(match))
             {
                 var val:String = GetArgValue(match, args, bAcceptNullArg);
                 src = src.replace(match, val);
                 continue;
             }
-            match = util.RegexUtil.Get1stMatch(m_numpattern, src);
+            match = psgg.HxRegexUtil.Get1stMatch(m_numpattern, src);
             if (!system.Cs2Hx.IsNullOrEmpty(match))
             {
                 var val:String = Std.string(num);

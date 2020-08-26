@@ -51,7 +51,7 @@ class SourceControl extends lib.StateManager
         G.TEMFUNC = null;
         if (!system.Cs2Hx.IsNullOrEmpty(G.template_src))
         {
-            var lines:Array<String> = util.StringUtil.SplitTrimEnd(G.template_src, 10);
+            var lines:Array<String> = lib.util.StringUtil.SplitTrimEnd(G.template_src, 10);
             if (lines == null)
             {
                 throw new system.SystemException("Unexpected! {F794458F-407A-490F-9666-B96369567B4C}");
@@ -176,7 +176,7 @@ class SourceControl extends lib.StateManager
                     var sample:String = getstr4(index);
                     if (!system.Cs2Hx.IsNullOrEmpty(sample))
                     {
-                        if (util.RegexUtil.IsMatch("\\\\x[0-9a-fA-F]{2}", sample))
+                        if (psgg.HxRegexUtil.IsMatch("\\\\x[0-9a-fA-F]{2}", sample))
                         {
                             var code:Int = system.Convert.ToInt32_String_Int32(sample.substr(2), 16);
                             c = code;
@@ -210,7 +210,7 @@ class SourceControl extends lib.StateManager
     {
         var state_list:Array<String> = new Array<String>();
         system.Cs2Hx.AddRange(state_list, G.state_list);
-        state_list = util.SortUtil.Sort(state_list);
+        state_list = psgg.HxSortUtil.Sort(state_list);
         var s:String = "";
         for (state in state_list)
         {
@@ -222,7 +222,7 @@ class SourceControl extends lib.StateManager
     {
         var state_list:Array<String> = new Array<String>();
         system.Cs2Hx.AddRange(state_list, G.state_list);
-        state_list = util.SortUtil.Sort(state_list);
+        state_list = psgg.HxSortUtil.Sort(state_list);
         var s:String = "";
         for (state in state_list)
         {
@@ -235,14 +235,14 @@ class SourceControl extends lib.StateManager
         var state_list:Array<String> = new Array<String>();
         system.Cs2Hx.ForEach(G.state_list, function (i:String):Void
         {
-            var a:String = util.RegexUtil.Get1stMatch(regex, i);
+            var a:String = psgg.HxRegexUtil.Get1stMatch(regex, i);
             if (!system.Cs2Hx.IsNullOrEmpty(a))
             {
                 state_list.push(i);
             }
         }
         );
-        state_list = util.SortUtil.Sort(state_list);
+        state_list = psgg.HxSortUtil.Sort(state_list);
         var s:String = "";
         for (state in state_list)
         {
@@ -275,7 +275,7 @@ class SourceControl extends lib.StateManager
     function setup_split_lc():Void
     {
         m_resultlist = new Array<String>();
-        m_lines = util.StringUtil.SplitTrimEnd(m_targetsrc, 10);
+        m_lines = lib.util.StringUtil.SplitTrimEnd(m_targetsrc, 10);
         m_line_index = 0;
         m_needCheckAgain = false;
     }
@@ -285,7 +285,7 @@ class SourceControl extends lib.StateManager
     }
     function lines_to_buf():Void
     {
-        m_targetsrc = util.StringUtil.LineToBuf(m_resultlist, G.NEWLINECHAR);
+        m_targetsrc = lib.util.StringUtil.LineToBuf(m_resultlist, G.NEWLINECHAR);
     }
     function br_OK(st:(Bool -> Void)):Void
     {
@@ -371,7 +371,7 @@ class SourceControl extends lib.StateManager
     }
     function is_contents_1_lc():Void
     {
-        var match:String = util.RegexUtil.Get1stMatch(G.CONTENTS1PTN, m_line);
+        var match:String = psgg.HxRegexUtil.Get1stMatch(G.CONTENTS1PTN, m_line);
         if (!system.Cs2Hx.IsNullOrEmpty(match))
         {
             var macrov:String = "";
@@ -384,7 +384,7 @@ class SourceControl extends lib.StateManager
                 }
             }
             var replacevalue:String = G.get_line_macro_value(macrov, m_contents1);
-            var tmplines:Array<String> = util.StringUtil.ReplaceWordsInLine(m_line, match, replacevalue);
+            var tmplines:Array<String> = lib.util.StringUtil.ReplaceWordsInLine(m_line, match, replacevalue);
             system.Cs2Hx.AddRange(m_resultlist, tmplines);
             m_bContinue = true;
         }
@@ -393,33 +393,33 @@ class SourceControl extends lib.StateManager
     {
         if (system.Cs2Hx.StringContains(m_line, G.CONTENTS2))
         {
-            var tmplines:Array<String> = util.StringUtil.ReplaceWordsInLine(m_line, G.CONTENTS2, m_contents2);
+            var tmplines:Array<String> = lib.util.StringUtil.ReplaceWordsInLine(m_line, G.CONTENTS2, m_contents2);
             system.Cs2Hx.AddRange(m_resultlist, tmplines);
             m_bContinue = true;
         }
     }
     function is_regex_contents_lc():Void
     {
-        var match:String = util.RegexUtil.Get1stMatch(G.REGEXCONT, m_line);
+        var match:String = psgg.HxRegexUtil.Get1stMatch(G.REGEXCONT, m_line);
         if (!system.Cs2Hx.IsNullOrEmpty(match))
         {
             var regex:String = system.Cs2Hx.Trim(match).substr(2);
             regex = regex.substr(0, regex.length - 2);
             var c:String = create_regex_contents(regex);
-            var tmplines:Array<String> = util.StringUtil.ReplaceWordsInLine(m_line, match, c);
+            var tmplines:Array<String> = lib.util.StringUtil.ReplaceWordsInLine(m_line, match, c);
             system.Cs2Hx.AddRange(m_resultlist, tmplines);
             m_bContinue = true;
         }
     }
     function is_regex_contents2_lc():Void
     {
-        var match:String = util.RegexUtil.Get1stMatch(G.REGEXCONT2, m_line);
+        var match:String = psgg.HxRegexUtil.Get1stMatch(G.REGEXCONT2, m_line);
         if (!system.Cs2Hx.IsNullOrEmpty(match))
         {
-            var regex:String = util.RegexUtil.Get1stMatch("\\$\\/.+\\/->#", match);
+            var regex:String = psgg.HxRegexUtil.Get1stMatch("\\$\\/.+\\/->#", match);
             regex = regex.substr(2);
             regex = regex.substr(0, regex.length - 4);
-            var macroname:String = util.RegexUtil.Get1stMatch("#.+\\$$", match);
+            var macroname:String = psgg.HxRegexUtil.Get1stMatch("#.+\\$$", match);
             macroname = system.Cs2Hx.TrimEnd(macroname, [ 36 ]);
             var macrobuf:String = G.getMacroValueFunc(macroname);
             if (system.Cs2Hx.IsNullOrEmpty(macrobuf))
@@ -427,7 +427,7 @@ class SourceControl extends lib.StateManager
                 throw new system.SystemException("Macro is not defined. : " + system.Cs2Hx.NullCheck(macroname));
             }
             var c:String = create_regex_contents(regex, macrobuf);
-            var tmplines:Array<String> = util.StringUtil.ReplaceWordsInLine(m_line, match, c);
+            var tmplines:Array<String> = lib.util.StringUtil.ReplaceWordsInLine(m_line, match, c);
             system.Cs2Hx.AddRange(m_resultlist, tmplines);
             m_bContinue = true;
         }
@@ -436,7 +436,7 @@ class SourceControl extends lib.StateManager
     {
         if (system.Cs2Hx.StringContains(m_line, G.PREFIXMACRO))
         {
-            var tmplines:Array<String> = util.StringUtil.ReplaceWordsInLine(m_line, G.PREFIXMACRO, G.PREFIX);
+            var tmplines:Array<String> = lib.util.StringUtil.ReplaceWordsInLine(m_line, G.PREFIXMACRO, G.PREFIX);
             system.Cs2Hx.AddRange(m_resultlist, tmplines);
             m_bContinue = true;
         }
@@ -457,7 +457,7 @@ class SourceControl extends lib.StateManager
             var enc:String = m_mw.GetIncludeFileEnc();
             var text:String = lib.IncludeFile.readfile(G, matchstr, file, enc);
             m_resultlist.push(G.GetComment(" #start include -" + system.Cs2Hx.NullCheck(file)));
-            var tmplines:Array<String> = util.StringUtil.ReplaceWordsInLine(m_line, matchstr, text);
+            var tmplines:Array<String> = lib.util.StringUtil.ReplaceWordsInLine(m_line, matchstr, text);
             system.Cs2Hx.AddRange(m_resultlist, tmplines);
             m_resultlist.push(G.GetComment(" #end include -" + system.Cs2Hx.NullCheck(file)));
             m_bContinue = true;
@@ -486,7 +486,7 @@ class SourceControl extends lib.StateManager
                     text = lib.MacroWork.Convert(text, 0, m_mw.GetArgValueList());
                 }
             }
-            var tmplines:Array<String> = util.StringUtil.ReplaceWordsInLine(m_line, matchstr, text);
+            var tmplines:Array<String> = lib.util.StringUtil.ReplaceWordsInLine(m_line, matchstr, text);
             system.Cs2Hx.AddRange(m_resultlist, tmplines);
             m_bContinue = true;
         }

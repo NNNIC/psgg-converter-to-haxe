@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace util
+namespace lib.util
 {
     //Haxeへの変換時、Sortができなかったための対処
     public class SortUtil

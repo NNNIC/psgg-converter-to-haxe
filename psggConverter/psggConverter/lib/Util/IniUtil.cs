@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
-namespace util
+using HT = System.Collections.Generic.Dictionary<string, object>;
+
+namespace lib.util
 {
 
 
@@ -32,15 +34,15 @@ namespace util
             var ht = CreateHashtable(initext);
             return GetValueFromHashtable(category, key, ht);
         }
-        public static string GetValueFromHashtable(string key, Hashtable ht)
+        public static string GetValueFromHashtable(string key, HT ht)
         {
-            if (ht.Contains(key))
+            if (ht.ContainsKey(key))
             {
                 return ht[key].ToString();
             }
             return null;
         }
-        public static double GetDoubleFromHashtable(string key, Hashtable ht, double error = -1)
+        public static double GetDoubleFromHashtable(string key, HT ht, double error = -1)
         {
             var val = GetValueFromHashtable(key, ht);
             if (val == null) return error;
@@ -51,14 +53,14 @@ namespace util
             }
             return error;
         }
-        public static string GetValueFromHashtable(string category, string key, Hashtable ht)
+        public static string GetValueFromHashtable(string category, string key, HT ht)
         {
             if (ht != null && ht.ContainsKey(category))
             {
                 var cateval = ht[category];
-                if (cateval != null && (cateval is Hashtable))
+                if (cateval != null && (cateval is HT))
                 {
-                    var cathash = (Hashtable)cateval;
+                    var cathash = (HT)cateval;
                     if (cathash.ContainsKey(key))
                     {
                         return cathash[key].ToString();
@@ -67,12 +69,12 @@ namespace util
             }
             return null;
         }
-        public static Hashtable CreateHashtable(string initext)
+        public static HT CreateHashtable(string initext)
         {
             if (string.IsNullOrEmpty(initext)) return null;
 
-            Hashtable mainhash = new Hashtable();
-            Hashtable cathash = null;
+            HT mainhash = new HT();
+            HT cathash = null;
 
             var lines = initext.Split('\n');
 
@@ -103,7 +105,7 @@ namespace util
                     }
                     var category = l.Substring(1, cindex - 1);
 
-                    cathash = new Hashtable();
+                    cathash = new HT();
                     mainhash.Add(category, cathash);
                 }
 
@@ -161,7 +163,7 @@ namespace util
             }
             return mainhash;
         }
-        public static Hashtable CreateHashtable(string initext, string category)
+        public static HT CreateHashtable(string initext, string category)
         {
             if (string.IsNullOrEmpty(initext)) return null;
 
@@ -169,9 +171,9 @@ namespace util
             if (ht != null && ht.ContainsKey(category))
             {
                 var cateval = ht[category];
-                if (cateval != null && (cateval is Hashtable))
+                if (cateval != null && (cateval is HT))
                 {
-                    var cathash = (Hashtable)cateval;
+                    var cathash = (HT)cateval;
                     return cathash;
                 }
             }
@@ -180,7 +182,7 @@ namespace util
         #endregion
 
         //使われていない。
-        //public static T GetParsedValueFromHashtable<T>(string key, Hashtable ht)
+        //public static T GetParsedValueFromHashtable<T>(string key, HT ht)
         //{
         //    var value = GetValueFromHashtable(key,ht);
         //    if (value==null) return default(T);
