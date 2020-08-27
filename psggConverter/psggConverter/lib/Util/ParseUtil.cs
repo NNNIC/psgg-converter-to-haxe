@@ -19,13 +19,13 @@ namespace lib.util
 
             return errorvalue;
         }
-        public static long ParseLong(string sφ, long errorvalue = long.MinValue)
+        public static long ParseLong(string s, long errorvalue = long.MinValue)
         {
             long ret;
             double retf;
-            if (long.TryParse(sφ, out ret))
+            if (long.TryParse(s, out ret))
                 return ret;
-            if (double.TryParse(sφ, out retf))
+            if (double.TryParse(s, out retf))
                 return (long)retf;
 
             return errorvalue;

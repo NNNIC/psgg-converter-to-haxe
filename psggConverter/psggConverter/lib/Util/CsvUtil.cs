@@ -17,7 +17,7 @@ namespace lib.util
                 }
             return s;
         }
-        public static List<int> GetALine(string s, int? error = null)
+        public static List<int> GetALine(string s, object error = null)
         {
             if (error != null)
             {

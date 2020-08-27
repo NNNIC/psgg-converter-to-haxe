@@ -24,7 +24,12 @@ import lib.SettingIniWork;
 import lib.SourceControl;
 import lib.SourceControl_MODE;
 import lib.StateManager;
+import lib.util.CsvUtil;
+import lib.util.DictionaryUtil;
 import lib.util.IniUtil;
+import lib.util.ParseUtil;
+import lib.util.PsggDataFileUtil;
+import lib.util.PsggDataFileUtil_Item;
 //import lib.util.RegexUtil;
 //import lib.util.SortUtil;
 import lib.util.StringUtil;
@@ -32,7 +37,7 @@ import lib.Ver;
 import lib.wordstrage.Store;
 import psggconverter.Program;
 import system.TimeSpan;
-class VConstructors
+class Constructors
 {
     public static function init()
     {
