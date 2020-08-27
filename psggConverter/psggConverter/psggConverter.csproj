@@ -61,8 +61,11 @@
     <Compile Include="lib\sm\MacroControl_created.cs" />
     <Compile Include="lib\sm\SourceControl.cs" />
     <Compile Include="lib\sm\SourceControl_created.cs" />
+    <Compile Include="lib\util\CsvUtil.cs" />
+    <Compile Include="lib\util\DictionaryUtil.cs" />
     <Compile Include="lib\util\IniUtil.cs" />
-    <Compile Include="lib\util\PsggFileUtil.cs" />
+    <Compile Include="lib\util\ParseUtil.cs" />
+    <Compile Include="lib\util\PsggDataFileUtil.cs" />
     <Compile Include="lib\util\RegexUtil.cs" />
     <Compile Include="lib\util\SortUtil.cs" />
     <Compile Include="lib\util\StringUtil.cs" />

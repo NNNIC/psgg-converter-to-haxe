@@ -5,8 +5,6 @@ using HT = System.Collections.Generic.Dictionary<string, object>;
 
 namespace lib.util
 {
-
-
     /// <summary>
     /// https://ja.wikipedia.org/wiki/INI%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB
     /// 
