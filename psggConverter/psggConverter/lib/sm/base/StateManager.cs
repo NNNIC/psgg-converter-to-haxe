@@ -9,6 +9,8 @@ namespace lib
 
         bool m_noWait;
 
+        bool m_bEnd;
+
         public void update()
         {
             while (true)
@@ -35,6 +37,14 @@ namespace lib
         public bool CheckState(Action<bool> func)
         {
             return m_curfunc == func;
+        }
+        public bool IsEnd()
+        {
+            return m_bEnd;
+        }
+        public void SetEnd(bool b)
+        {
+            m_bEnd = b;
         }
         // for tempfunc
         public void SetNextState(Action<bool> func)

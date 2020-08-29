@@ -130,7 +130,10 @@ namespace lib
         {
                                              // 0123456789
             //m_filename = m_matchstr.Substring(/*$include:*/9).TrimEnd('$');
-            var str = m_matchstr.Substring(/*$include:*/9).TrimEnd('$');
+            //var str = m_matchstr.Substring(/*$include:*/9).TrimEnd('$');
+            var str = m_matchstr.Substring(/*$include:*/9);
+            str = StringUtil.TrimEnd(str,'$');
+
             if (str.Contains(','))
             {
                 var tokens = str.Split(',');
@@ -151,7 +154,10 @@ namespace lib
         }
         void analyze_macro()
         {                                       //01234567
-            m_macrovalue = m_matchstr.Substring(/*$macro:*/7).TrimEnd('$');
+            //m_macrovalue = m_matchstr.Substring(/*$macro:*/7).TrimEnd('$');
+            m_macrovalue = m_matchstr.Substring(/*$macro:*/7);
+            m_macrovalue = StringUtil.TrimEnd(m_macrovalue,'$');
+
             string api;
             List<string> args;
             string error;

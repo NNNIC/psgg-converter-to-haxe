@@ -61,6 +61,7 @@
     <Compile Include="lib\sm\MacroControl_created.cs" />
     <Compile Include="lib\sm\SourceControl.cs" />
     <Compile Include="lib\sm\SourceControl_created.cs" />
+    <Compile Include="lib\util\ArrayUtil.cs" />
     <Compile Include="lib\util\CsvUtil.cs" />
     <Compile Include="lib\util\DictionaryUtil.cs" />
     <Compile Include="lib\util\IniUtil.cs" />

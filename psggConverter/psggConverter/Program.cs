@@ -11,13 +11,34 @@ namespace psggConverter
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
+            //相対パステスト
+
+            Action<string, string> rtest = (a, b) => {
+                var r = PathUtil.GetRelativePath(a, b);
+                var abs = Path.Combine(a, r);
+                var fabs = Path.GetFullPath(abs);
+                Console.WriteLine("---------");
+                Console.WriteLine("a = " + a);
+                Console.WriteLine("b = " + b);
+                Console.WriteLine("r = " + r);
+                Console.WriteLine("check = " + fabs);
+            };
+
+            rtest(@"c:\vv\g\q\n", @"C:\vv\d");
+            rtest(@"c:\vv\g\q\n", @"C:\vv\g\x.c");
+            rtest(@"c:\vv\g\q", @"C:\vv\d");
+            rtest(@"c:\vv\", @"C:\vv\x");
+            rtest(@"c:\", @"C:\vv");
+
+
+
             var p = new lib.Convert();
             p.TEST();
 
             var psggfile = @"G:\statego\psgg-converter-to-haxe\tohaxe\testdata\c\TestControl.psgg";
-            var psggdir = Path.GetDirectoryName(psggfile);
+            var psggdir =  @"G:\statego\psgg-converter-to-haxe\tohaxe\testdata\c";//Path.GetDirectoryName(psggfile);
             var item = lib.util.PsggDataFileUtil.ReadPsgg(psggfile);
             p.COMMENTLINE_FORMAT = item.get_setting("macro", "commentline");
             p.template_src = item.m_tmpsrc;

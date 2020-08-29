@@ -11,7 +11,7 @@ namespace lib
     {
 
         public lib.Convert G;
-        public bool IsEnd() { return CheckState(S_END); }
+        //public bool IsEnd() { return CheckState(S_END); }
 
         public enum MODE
         {
@@ -458,7 +458,7 @@ namespace lib
 
                 //マクロ名の取得
                 var macroname = RegexUtil.Get1stMatch(@"#.+\$$", match);  // #macro$
-                macroname = macroname.TrimEnd('$');
+                macroname = StringUtil.TrimEnd( macroname, '$');
 
                 var macrobuf = G.getMacroValueFunc(macroname);
                 if (string.IsNullOrEmpty(macrobuf))

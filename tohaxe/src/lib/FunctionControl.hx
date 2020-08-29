@@ -7,10 +7,6 @@ class FunctionControl extends lib.StateManager
 {
     public var G:lib.Convert;
     public var m_state:String;
-    public function IsEnd():Bool
-    {
-        return CheckState(S_END);
-    }
     public var m_error:String = "";
     var m_OkNG:Bool = false;
     var m_needAgain:Bool = false;
@@ -69,6 +65,7 @@ class FunctionControl extends lib.StateManager
             var r:lib.RefListString = new lib.RefListString();
             r.list = m_lines;
             m_needAgain = G.createFunc_prepare(m_state, r);
+            m_lines = r.list;
         }
         catch (e:system.SystemException)
         {
@@ -84,6 +81,7 @@ class FunctionControl extends lib.StateManager
             var r:lib.RefListString = new lib.RefListString();
             r.list = m_lines;
             m_needAgain = G.createFunc_work(m_state, r);
+            m_lines = r.list;
         }
         catch (e:system.SystemException)
         {
@@ -195,6 +193,7 @@ class FunctionControl extends lib.StateManager
     {
         if (bFirst)
         {
+            SetEnd(true);
         }
         if (HasNextState())
         {
@@ -333,6 +332,7 @@ class FunctionControl extends lib.StateManager
     {
         if (bFirst)
         {
+            SetEnd(false);
         }
         br_USE_TEMPFUNC(S_SETBUF);
         br_USE_MACROBUF(S_SETMACROBUF);

@@ -28,5 +28,6 @@ echo :
 echo : Do not run.
 echo : Open by Visual Studio 2019
 pause
+start out\cs\Program.csproj
 ::out\cs\bin\Program.exe
 ::pause

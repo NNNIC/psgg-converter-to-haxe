@@ -146,10 +146,6 @@ class InsertCodeControl extends lib.StateManager
     {
         Goto(S_START);
     }
-    public function IsEnd():Bool
-    {
-        return CheckState(S_END);
-    }
     var m_enc:system.text.Encoding = system.text.Encoding.UTF8;
     var m_bl:String;
     var m_cur:Int = 0;
@@ -199,6 +195,10 @@ class InsertCodeControl extends lib.StateManager
     }
     function S_END(bFirst:Bool):Void
     {
+        if (bFirst)
+        {
+            SetEnd(true);
+        }
         if (HasNextState())
         {
             GoNextState();
@@ -355,6 +355,10 @@ class InsertCodeControl extends lib.StateManager
     }
     function S_START(bFirst:Bool):Void
     {
+        if (bFirst)
+        {
+            SetEnd(false);
+        }
         if (!HasNextState())
         {
             SetNextState(S_READSRC);

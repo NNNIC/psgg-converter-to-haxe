@@ -11,7 +11,7 @@ namespace lib
 
         public lib.Convert G;
         public string m_state;
-        public bool IsEnd() { return CheckState(S_END); }
+        //public bool IsEnd() { return CheckState(S_END); }
 
         public string m_error = string.Empty;
         bool m_OkNG = false;

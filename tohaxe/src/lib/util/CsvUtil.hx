@@ -34,10 +34,6 @@ class CsvUtil
         }
         return lib.util.ParseUtil.ParseIntList(s);
     }
-    public static function GetALineUInt64(s:String, error:Float = system.UInt64.MaxValue):Array<Float>
-    {
-        return lib.util.ParseUtil.ParseIntListUInt64(s, error);
-    }
     public static function GetALineString(s:String):Array<String>
     {
         if (system.Cs2Hx.IsNullOrEmpty(s))

@@ -8,7 +8,7 @@ namespace lib
     public partial class MacroControl
     {
 
-        public bool IsEnd() { return CheckState(S_END); }
+        //public bool IsEnd() { return CheckState(S_END); }
         public lib.Convert G;
         public bool m_bOkNg;
         public bool m_bYesNo;

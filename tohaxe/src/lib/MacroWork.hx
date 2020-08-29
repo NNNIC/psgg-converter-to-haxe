@@ -116,7 +116,8 @@ class MacroWork
     }
     function analyze_include():Void
     {
-        var str:String = system.Cs2Hx.TrimEnd(m_matchstr.substr(9), [ 36 ]);
+        var str:String = m_matchstr.substr(9);
+        str = lib.util.StringUtil.TrimEnd(str, 36);
         if (system.Cs2Hx.Contains(Cs2Hx.ToCharArray(str), 44))
         {
             var tokens:Array<String> = system.Cs2Hx.Split(str, [ 44 ]);
@@ -137,7 +138,8 @@ class MacroWork
     }
     function analyze_macro():Void
     {
-        m_macrovalue = system.Cs2Hx.TrimEnd(m_matchstr.substr(7), [ 36 ]);
+        m_macrovalue = m_matchstr.substr(7);
+        m_macrovalue = lib.util.StringUtil.TrimEnd(m_macrovalue, 36);
         var api:CsRef<String> = new CsRef<String>(null);
         var args:CsRef<Array<String>> = new CsRef<Array<String>>(null);
         var error:CsRef<String> = new CsRef<String>(null);

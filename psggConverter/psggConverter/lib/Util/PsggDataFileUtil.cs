@@ -30,9 +30,16 @@ namespace lib.util
             public string m_tmpfnc; //関数テンプレート
 
             //headerから要素取得関数
-            public string get_header(string key) { return IniUtil.GetValue(key,m_header_buf)?.ToString(); }
-            
-            public string get_config(string key) { return IniUtil.GetValue(key,m_config_buf)?.ToString(); }
+            public string get_header(string key) {
+                var v = IniUtil.GetValue(key, m_header_buf);
+                return (v != null ? v.ToString() : null);
+            }
+
+            public string get_config(string key)
+            {
+                var v = IniUtil.GetValue(key, m_config_buf);
+                return (v != null ? v.ToString() : null);
+            }
             public string get_setting(string group, string key) { return IniUtil.GetValue(group,key,m_setting_buf); }
             public object get_setting(string group) { return IniUtil.GetValue(group, m_setting_buf); }
             public string get_help(string group, string key) { return IniUtil.GetValue(group, key, m_help_buf); }
@@ -104,7 +111,8 @@ namespace lib.util
             }
             public string get_chart(string key) { 
                 chart_init();
-                return IniUtil.GetValueFromHashtable(key,m_chart_ht)?.ToString(); 
+                var v = IniUtil.GetValueFromHashtable(key, m_chart_ht);
+                return v != null ? v.ToString() : null;
 
             }
             private List<string> get_staterow_list()
@@ -214,8 +222,13 @@ namespace lib.util
                 if (m_editor_name_list != null) return;
                 m_editor_name_list     = new List<string>();
                 m_editor_row_list = new List<int>();
-                for(var row = 1; row <= 1000; row++)
+
+                //for(var row = 1; row <= 1000; row++)
+                var row = 0;
+                while(row <= 1000)
                 {
+                    row++;
+                    
                     var s = get_chart_val(row,NAME_COL);
                     if (s==null) continue;
                     s = s.Trim();
@@ -230,8 +243,12 @@ namespace lib.util
                 //
                 m_editor_state_list = new List<string>();
                 m_editor_col_list = new List<int>();
-                for(var col = START_COL; col <= 10000; col++)
+                //for(var col = START_COL; col <= 10000; col++)
+                var col = START_COL - 1;
+                while(col <= 10000)
                 {
+                    col++;
+
                     var s = get_chart_val(STATE_ROW,col);
                     if (s==null) continue;
                     s = s.Trim();

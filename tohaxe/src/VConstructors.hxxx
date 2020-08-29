@@ -27,21 +27,17 @@ import lib.StateManager;
 import lib.util.CsvUtil;
 import lib.util.DictionaryUtil;
 import lib.util.IniUtil;
-import lib.util.ListUtil;
-import lib.util.MacroUtil;
 import lib.util.ParseUtil;
-import lib.util.PathUtil;
 import lib.util.PsggDataFileUtil;
 import lib.util.PsggDataFileUtil_Item;
 //import lib.util.RegexUtil;
 //import lib.util.SortUtil;
-import lib.util.StateUtil;
 import lib.util.StringUtil;
 import lib.Ver;
 import lib.wordstrage.Store;
 import psggconverter.Program;
 import system.TimeSpan;
-class VConstructors
+class Constructors
 {
     public static function init()
     {

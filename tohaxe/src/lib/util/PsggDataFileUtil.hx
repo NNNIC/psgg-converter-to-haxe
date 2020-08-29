@@ -71,13 +71,15 @@ class PsggDataFileUtil
         }
         var get_tmp:(String -> String) = function (s:String):String
         {
-            var si:Int = s.indexOf(lib.wordstrage.Store.PSGG_MARK_VARIOUS_BEGIN);
+            var begin:String = lib.wordstrage.Store.PSGG_MARK_VARIOUS_BEGIN;
+            var end:String = lib.wordstrage.Store.PSGG_MARK_VARIOUS_END;
+            var si:Int = s.indexOf(begin);
             if (si < 0)
             {
                 return null;
             }
-            var s1:String = s.substr(si);
-            var ei:Int = s1.indexOf(lib.wordstrage.Store.PSGG_MARK_VARIOUS_END);
+            var s1:String = s.substr(si + begin.length);
+            var ei:Int = s1.indexOf(end);
             if (ei < 0)
             {
                 return null;

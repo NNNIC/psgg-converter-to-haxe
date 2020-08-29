@@ -407,7 +407,14 @@ namespace lib.util
                 return false;
             }
             api = buf.Substring(0, sp);
-            var argstr = buf.Substring(sp, (ep - sp)).TrimStart('(').TrimEnd(')').Trim();
+            //var argstr = buf.Substring(sp, (ep - sp)).TrimStart('(').TrimEnd(')').Trim();
+            var argstr = buf.Substring(sp, (ep - sp));
+            if (!string.IsNullOrEmpty(argstr))
+            {
+                argstr = argstr.TrimStart('(');
+                if (!string.IsNullOrEmpty(argstr)) argstr = TrimEnd(argstr, ')');
+                if (!string.IsNullOrEmpty(argstr)) argstr = argstr.Trim();
+            }
             if (string.IsNullOrEmpty(argstr))
             {
                 return true;
@@ -421,6 +428,22 @@ namespace lib.util
             //arglist.Insert(0,api);
             args = arglist;
             return true;
+        }
+        public static string TrimEnd(string s, char c) // bc HAXE not suported.
+        {
+            if (string.IsNullOrEmpty(s)) return s;
+            var len = s.Length;
+            for(var i = 0; i < len; i++)
+            {
+                if (!string.IsNullOrEmpty(s))
+                {
+                    if (s[s.Length - 1] == c)
+                    {
+                        s = s.Substring(0,s.Length-1);
+                    }
+                }
+            }
+            return s;
         }
         public static List<string> SplittComma_And_ApiArges(string s) //API型もカンマ区切のデータも、まとめて引数化
         {

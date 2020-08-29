@@ -6,10 +6,6 @@ import anonymoustypes.*;
 class SourceControl extends lib.StateManager
 {
     public var G:lib.Convert;
-    public function IsEnd():Bool
-    {
-        return CheckState(S_END);
-    }
     public var mode:Int = 0;
     public var m_insert_template_src:String;
     public var m_insert_output:String;
@@ -92,7 +88,7 @@ class SourceControl extends lib.StateManager
         {
             try
             {
-                G.template_src = psgg.HxFile.ReadAllText_String_Encoding(system.io.Path.Combine_String_String(G.XLSDIR, G.TEMSRC), system.text.Encoding.UTF8);
+                G.template_src = psgg.HxFile.ReadAllText_String_Encoding(psgg.HxFile.Combine_String_String(G.XLSDIR, G.TEMSRC), system.text.Encoding.UTF8);
                 if (!system.Cs2Hx.IsNullOrEmpty(G.PREFIX))
                 {
                     G.template_src = G.template_src.replace("__PREFIX__", G.PREFIX);
@@ -107,7 +103,7 @@ class SourceControl extends lib.StateManager
         {
             try
             {
-                G.template_func = psgg.HxFile.ReadAllText_String_Encoding(system.io.Path.Combine_String_String(G.XLSDIR, G.TEMFUNC), system.text.Encoding.UTF8);
+                G.template_func = psgg.HxFile.ReadAllText_String_Encoding(psgg.HxFile.Combine_String_String(G.XLSDIR, G.TEMFUNC), system.text.Encoding.UTF8);
                 if (!system.Cs2Hx.IsNullOrEmpty(G.PREFIX))
                 {
                     G.template_func = G.template_func.replace("__PREFIX__", G.PREFIX);
@@ -192,8 +188,8 @@ class SourceControl extends lib.StateManager
     }
     function write_file():Void
     {
-        var path:String = system.io.Path.Combine_String_String(m_gendir, G.OUTPUT);
-        var dir:String = system.io.Path.GetDirectoryName(path);
+        var path:String = psgg.HxFile.Combine_String_String(m_gendir, G.OUTPUT);
+        var dir:String = psgg.HxFile.GetDirectoryName(path);
         if (!system.io.Directory.Exists(dir))
         {
             system.io.Directory.CreateDirectory(dir);
@@ -420,7 +416,7 @@ class SourceControl extends lib.StateManager
             regex = regex.substr(2);
             regex = regex.substr(0, regex.length - 4);
             var macroname:String = psgg.HxRegexUtil.Get1stMatch("#.+\\$$", match);
-            macroname = system.Cs2Hx.TrimEnd(macroname, [ 36 ]);
+            macroname = lib.util.StringUtil.TrimEnd(macroname, 36);
             var macrobuf:String = G.getMacroValueFunc(macroname);
             if (system.Cs2Hx.IsNullOrEmpty(macrobuf))
             {
@@ -618,6 +614,7 @@ class SourceControl extends lib.StateManager
     {
         if (bFirst)
         {
+            SetEnd(true);
         }
         if (HasNextState())
         {
@@ -906,6 +903,7 @@ class SourceControl extends lib.StateManager
     {
         if (bFirst)
         {
+            SetEnd(false);
         }
         if (!HasNextState())
         {

@@ -8,6 +8,7 @@ class CfPrepareControl
     var m_curfunc:(Bool -> Void);
     var m_nextfunc:(Bool -> Void);
     var m_noWait:Bool = false;
+    var m_bEnd:Bool = false;
     public function Update():Void
     {
         while (true)
@@ -60,11 +61,12 @@ class CfPrepareControl
     }
     public function Start():Void
     {
+        m_bEnd = false;
         Goto(S_START);
     }
     public function IsEnd():Bool
     {
-        return CheckState(S_END);
+        return m_bEnd;
     }
     public function Run():Void
     {
@@ -237,6 +239,10 @@ class CfPrepareControl
     }
     function S_END(bFirst:Bool):Void
     {
+        if (bFirst)
+        {
+            m_bEnd = true;
+        }
     }
     function S_EXEC_REGEX(bFirst:Bool):Void
     {

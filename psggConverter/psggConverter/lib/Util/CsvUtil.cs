@@ -25,10 +25,10 @@ namespace lib.util
             }
             return ParseUtil.ParseIntList(s);
         }
-        public static List<System.UInt64> GetALineUInt64(string s, System.UInt64 error = System.UInt64.MaxValue)
-        {
-            return ParseUtil.ParseIntListUInt64(s, error);
-        }
+        //public static List<System.UInt64> GetALineUInt64(string s, System.UInt64 error = System.UInt64.MaxValue)
+        //{
+        //    return ParseUtil.ParseIntListUInt64(s, error);
+        //}
 
         public static List<string> GetALineString(string s)
         {

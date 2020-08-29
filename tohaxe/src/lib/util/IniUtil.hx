@@ -5,7 +5,7 @@ import anonymoustypes.*;
 
 class IniUtil
 {
-    public static function GetValue(key:String, initext:String):String
+    public static function GetValue(key:String, initext:String):Dynamic
     {
         var ht:system.collections.generic.Dictionary<String, Dynamic> = CreateHashtable(initext);
         return GetValueFromHashtable(key, ht);
@@ -15,23 +15,23 @@ class IniUtil
         var ht:system.collections.generic.Dictionary<String, Dynamic> = CreateHashtable(initext);
         return GetValueFromHashtable_String_String_DictionaryStringObject(category, key, ht);
     }
-    public static function GetValueFromHashtable(key:String, ht:system.collections.generic.Dictionary<String, Dynamic>):String
+    public static function GetValueFromHashtable(key:String, ht:system.collections.generic.Dictionary<String, Dynamic>):Dynamic
     {
         if (ht.ContainsKey(key))
         {
-            return ht.GetValue_TKey(key).toString();
+            return ht.GetValue_TKey(key);
         }
         return null;
     }
     public static function GetDoubleFromHashtable(key:String, ht:system.collections.generic.Dictionary<String, Dynamic>, error:Float = -1):Float
     {
-        var val:String = GetValueFromHashtable(key, ht);
+        var val:Dynamic = GetValueFromHashtable(key, ht);
         if (val == null)
         {
             return error;
         }
         var o:CsRef<Float> = new CsRef<Float>(0);
-        if (Cs2Hx.TryParseFloat(val, o))
+        if (Cs2Hx.TryParseFloat(val.toString(), o))
         {
             return o.Value;
         }

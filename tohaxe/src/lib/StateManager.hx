@@ -9,6 +9,7 @@ class StateManager
     var m_nextfunc:(Bool -> Void);
     var m_tempfunc:(Bool -> Void);
     var m_noWait:Bool = false;
+    var m_bEnd:Bool = false;
     public function update():Void
     {
         while (true)
@@ -38,6 +39,14 @@ class StateManager
     public function CheckState(func:(Bool -> Void)):Bool
     {
         return m_curfunc == func;
+    }
+    public function IsEnd():Bool
+    {
+        return m_bEnd;
+    }
+    public function SetEnd(b:Bool):Void
+    {
+        m_bEnd = b;
     }
     public function SetNextState(func:(Bool -> Void)):Void
     {

@@ -17,6 +17,7 @@ namespace lib
         Action<bool> m_nextfunc;
 
         bool m_noWait;
+        bool m_bEnd;
 
         public void Update()
         {
@@ -73,11 +74,12 @@ namespace lib
 
         public void Start()
         {
+            m_bEnd = false;
             Goto(S_START);
         }
         public bool IsEnd()
         {
-            return CheckState(S_END);
+            return m_bEnd;
         }
 
         public void Run()
@@ -269,6 +271,11 @@ namespace lib
         */
         void S_END(bool bFirst)
         {
+            //
+            if (bFirst)
+            {
+                m_bEnd = true;
+            }
         }
         /*
             S_EXEC_REGEX

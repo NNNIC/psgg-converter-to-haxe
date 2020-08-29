@@ -1,11 +1,11 @@
-﻿#include <stdio.h>
+&#xFEFF;null#include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
 
 //== Declear States  ==
 
 //                                      [STATEGO OUTPUT START] $/^S_/->#static$
-    //             psggConverterLib.dll converted from psgg-file:TestControl.psgg
+    //             psggConverterLib.dll converted from psgg-file:..\testcontrol.psgg
 
     static void S_0001(bool bFirst);
     static void S_0002(bool bFirst);
@@ -20,10 +20,10 @@
     static void S_LOOP1_LoopNext____(bool bFirst);
     static void S_RETURN1(bool bFirst);
     static void S_RETURN2(bool bFirst);
-    static void S_Second(bool bFirst);
     static void S_START(bool bFirst);
     static void S_SUBSTART1(bool bFirst);
     static void S_SUBSTART2(bool bFirst);
+    static void S_Second(bool bFirst);
     static void S_Third(bool bFirst);
 
 
@@ -101,7 +101,7 @@ static void ReturnState()
 	Goto(st);
 }
 //                                      [STATEGO OUTPUT START] $/^E_/$
-    //             psggConverterLib.dll converted from psgg-file:TestControl.psgg
+    //             psggConverterLib.dll converted from psgg-file:..\testcontrol.psgg
 
     /*
         E_0001
@@ -113,7 +113,7 @@ static void ReturnState()
 //                                      [STATEGO OUTPUT END] 
 
 //                                      [STATEGO OUTPUT START] $/^S_/$
-    //             psggConverterLib.dll converted from psgg-file:TestControl.psgg
+    //             psggConverterLib.dll converted from psgg-file:..\testcontrol.psgg
 
     /*
         S_0001
@@ -153,10 +153,6 @@ static void ReturnState()
         {
             printf("Loop Cointer : %d\n", m_I );
         }
-        if (a == 1) { Goto( S_First ); }
-        else if (a == 2) { Goto( S_Second ); }
-        else if (a == 3) { Goto( S_Third ); }
-        else { Goto( S_First3 ); }
     }
     /*
         S_END
@@ -239,20 +235,6 @@ static void ReturnState()
         NoWait();
     }
     /*
-        S_Second
-    */
-    void S_Second(bool bFirst)
-    {
-        if (bFirst)
-        {
-            printf("Say 2nd\n");
-        }
-        if (!HasNextState())
-        {
-            Goto(S_RETURN2);
-        }
-    }
-    /*
         S_START
     */
     void S_START(bool bFirst)
@@ -278,6 +260,20 @@ static void ReturnState()
         if (!HasNextState())
         {
             Goto(S_0003);
+        }
+    }
+    /*
+        S_Second
+    */
+    void S_Second(bool bFirst)
+    {
+        if (bFirst)
+        {
+            printf("Say 2nd\n");
+        }
+        if (!HasNextState())
+        {
+            Goto(S_RETURN2);
         }
     }
     /*

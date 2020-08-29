@@ -30,7 +30,7 @@ namespace lib.util
 
             return errorvalue;
         }
-        public static float ParseFloat(string s, float errorvalue = float.NaN)
+        public static float ParseFloat(string s, float errorvalue = float.MinValue)
         {
             float ret;
             if (float.TryParse(s, out ret))
@@ -38,7 +38,7 @@ namespace lib.util
 
             return errorvalue;
         }
-        public static List<float> ParseFloatList(string s, float errorvalue = float.NaN)
+        public static List<float> ParseFloatList(string s, float errorvalue = float.MinValue)
         {
             if (string.IsNullOrEmpty(s)) return null;
 
@@ -64,23 +64,23 @@ namespace lib.util
             }
             return list;
         }
-        public static List<System.UInt64> ParseIntListUInt64(string s, System.UInt64 errorvalue = System.UInt64.MaxValue)
-        {
-            if (string.IsNullOrEmpty(s)) return null;
+        //public static List<System.UInt64> ParseIntListUInt64(string s, System.UInt64 errorvalue = System.UInt64.MaxValue)
+        //{
+        //    if (string.IsNullOrEmpty(s)) return null;
 
-            var list = new List<System.UInt64>();
-            var tokens = s.Split(',');
-            foreach (var i in tokens)
-            {
-                var v = default(System.UInt64);
-                if (!System.UInt64.TryParse(s, out v))
-                {
-                    v = errorvalue;
-                }
-                list.Add(v);
-            }
-            return list;
-        }
+        //    var list = new List<System.UInt64>();
+        //    var tokens = s.Split(',');
+        //    foreach (var i in tokens)
+        //    {
+        //        var v = default(System.UInt64);
+        //        if (!System.UInt64.TryParse(s, out v))
+        //        {
+        //            v = errorvalue;
+        //        }
+        //        list.Add(v);
+        //    }
+        //    return list;
+        //}
 
 
 

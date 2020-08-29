@@ -37,7 +37,7 @@ class ParseUtil
         }
         return errorvalue;
     }
-    public static function ParseFloat(s:String, errorvalue:Float = Math.NaN):Float
+    public static function ParseFloat(s:String, errorvalue:Float = -3.402823E+38):Float
     {
         var ret:CsRef<Float> = new CsRef<Float>(0);
         if (Cs2Hx.TryParseFloat(s, ret))
@@ -46,7 +46,7 @@ class ParseUtil
         }
         return errorvalue;
     }
-    public static function ParseFloatList(s:String, errorvalue:Float = Math.NaN):Array<Float>
+    public static function ParseFloatList(s:String, errorvalue:Float = -3.402823E+38):Array<Float>
     {
         if (system.Cs2Hx.IsNullOrEmpty(s))
         {
@@ -73,25 +73,6 @@ class ParseUtil
         {
             var v:Int = ParseInt(i, errorvalue);
             list.push(v);
-        }
-        return list;
-    }
-    public static function ParseIntListUInt64(s:String, errorvalue:Float = system.UInt64.MaxValue):Array<Float>
-    {
-        if (system.Cs2Hx.IsNullOrEmpty(s))
-        {
-            return null;
-        }
-        var list:Array<Float> = new Array<Float>();
-        var tokens:Array<String> = system.Cs2Hx.Split(s, [ 44 ]);
-        for (i in tokens)
-        {
-            var v:CsRef<Float> = new CsRef<Float>(null);
-            if (!system.UInt64.TryParse(s, v))
-            {
-                v.Value = errorvalue;
-            }
-            list.push(v.Value);
         }
         return list;
     }

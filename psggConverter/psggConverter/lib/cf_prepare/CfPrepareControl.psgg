@@ -93,6 +93,7 @@ n01a=100001
 
 [s0002]
 n002=S_END
+n00a=m_bEnd = true;
 n019=3584,133
 n01a=100002
 
@@ -859,7 +860,7 @@ n01a=100037
 sheet=config
 
 ###VARIOUS-CONTENTS-BEGIN###
-; The setting was created automatically. 2020/08/29 11:44:33
+; The setting was created automatically. 2020/08/29 15:37:38
 ; * pssgEditor version : 0.66.5030.be6b2a7a2f9e64d0160759469b371cf04a1c84a1
 psggfile=@@@
 CfPrepareControl.psgg

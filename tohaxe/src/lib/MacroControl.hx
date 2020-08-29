@@ -5,10 +5,6 @@ import anonymoustypes.*;
 
 class MacroControl extends lib.StateManager
 {
-    public function IsEnd():Bool
-    {
-        return CheckState(S_END);
-    }
     public var G:lib.Convert;
     public var m_bOkNg:Bool = false;
     public var m_bYesNo:Bool = false;
@@ -317,6 +313,7 @@ class MacroControl extends lib.StateManager
     {
         if (bFirst)
         {
+            SetEnd(true);
         }
         if (HasNextState())
         {
@@ -400,6 +397,7 @@ class MacroControl extends lib.StateManager
     {
         if (bFirst)
         {
+            SetEnd(false);
         }
         if (!HasNextState())
         {

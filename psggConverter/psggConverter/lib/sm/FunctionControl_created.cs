@@ -34,6 +34,7 @@ namespace lib {
         {
             if (bFirst)
             {
+                SetEnd(true);
             }
             if (HasNextState())
             {
@@ -214,6 +215,7 @@ namespace lib {
         {
             if (bFirst)
             {
+                SetEnd(false);
             }
             br_USE_TEMPFUNC(S_SETBUF);
             br_USE_MACROBUF(S_SETMACROBUF);

@@ -11,10 +11,10 @@ namespace lib {
         {
             Goto(S_START);
         }
-        public bool IsEnd()
-        {
-            return CheckState(S_END);
-        }
+        //public bool IsEnd()
+        //{
+        //    return CheckState(S_END);
+        //}
 
 
 
@@ -102,6 +102,10 @@ namespace lib {
         */
         void S_END(bool bFirst)
         {
+            if (bFirst)
+            {
+                SetEnd(true);
+            }
             //
             if (HasNextState())
             {
@@ -286,6 +290,10 @@ namespace lib {
         */
         void S_START(bool bFirst)
         {
+            if (bFirst)
+            {
+                SetEnd(false);
+            }
             //
             if (!HasNextState())
             {

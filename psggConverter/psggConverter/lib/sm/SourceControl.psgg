@@ -81,6 +81,7 @@ s0024=S_IS_PREFIX
 [s0001]
 n002=S_START
 n005=S_CHECKMODE
+n007=SetEnd(false);
 n012=@@@
 /
 (100,100)
@@ -92,6 +93,7 @@ n014=100001
 
 [s0002]
 n002=S_END
+n007=SetEnd(true);
 n012=@@@
 /
 (100,100)
@@ -711,7 +713,7 @@ n014=100031
 sheet=config
 
 ###VARIOUS-CONTENTS-BEGIN###
-; The setting was created automatically. 2020/08/26 21:22:09
+; The setting was created automatically. 2020/08/29 15:43:53
 ; * pssgEditor version : 0.66.5030.be6b2a7a2f9e64d0160759469b371cf04a1c84a1
 psggfile=@@@
 SourceControl.psgg
@@ -729,7 +731,7 @@ c_thumbnail=1
 c_contents=1
 force_display_outpin=0
 last_action=@@@
-init,Initilized
+varied,Edited a state.
 @@@
 target_pathdir=@@@
 /

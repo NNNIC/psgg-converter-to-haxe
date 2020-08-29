@@ -148,7 +148,7 @@ class DateTime
 	
 	public inline function Subtract(other:DateTime):TimeSpan
 	{
-		Assert.Fatal(other != null, "Subtract called with null date");
+		//assert(other != null, "Subtract called with null date");
 		return new TimeSpan(date.getTime() - other.date.getTime());
 	}
 

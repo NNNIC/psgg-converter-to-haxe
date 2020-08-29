@@ -298,6 +298,7 @@ class StringUtil
             var tmp:String = line.replace(target, replace2);
             var p:Array<String> = new Array<String>();
             p.push(tmp);
+            return p;
         }
         var replines:Array<String> = bTrimEnd ? lib.util.StringUtil.SplitTrimEnd(replace2, 10) : lib.util.StringUtil.SplitTrim(replace2, 10);
         var firstspace:String = psgg.HxRegexUtil.Get1stMatch("^\\s", line);
@@ -423,7 +424,19 @@ class StringUtil
             return false;
         }
         api.Value = buf.substr(0, sp);
-        var argstr:String = system.Cs2Hx.Trim(system.Cs2Hx.TrimEnd(system.Cs2Hx.TrimStart(buf.substr(sp, (ep - sp)), [ 40 ]), [ 41 ]));
+        var argstr:String = buf.substr(sp, (ep - sp));
+        if (!system.Cs2Hx.IsNullOrEmpty(argstr))
+        {
+            argstr = system.Cs2Hx.TrimStart(argstr, [ 40 ]);
+            if (!system.Cs2Hx.IsNullOrEmpty(argstr))
+            {
+                argstr = TrimEnd(argstr, 41);
+            }
+            if (!system.Cs2Hx.IsNullOrEmpty(argstr))
+            {
+                argstr = system.Cs2Hx.Trim(argstr);
+            }
+        }
         if (system.Cs2Hx.IsNullOrEmpty(argstr))
         {
             return true;
@@ -436,6 +449,29 @@ class StringUtil
         }
         args.Value = arglist;
         return true;
+    }
+    public static function TrimEnd(s:String, c:Int):String
+    {
+        if (system.Cs2Hx.IsNullOrEmpty(s))
+        {
+            return s;
+        }
+        var len:Int = s.length;
+        { //for
+            var i:Int = 0;
+            while (i < len)
+            {
+                if (!system.Cs2Hx.IsNullOrEmpty(s))
+                {
+                    if (s.charCodeAt(s.length - 1) == c)
+                    {
+                        s = s.substr(0, s.length - 1);
+                    }
+                }
+                i++;
+            }
+        } //end for
+        return s;
     }
     public static function SplittComma_And_ApiArges(s:String):Array<String>
     {

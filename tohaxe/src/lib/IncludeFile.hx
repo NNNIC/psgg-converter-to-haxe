@@ -11,13 +11,13 @@ class IncludeFile
         {
             enc = "utf-8";
         }
-        var filepath:String = system.io.Path.Combine_String_String(g.INCDIR, file);
+        var filepath:String = psgg.HxFile.Combine_String_String(g.INCDIR, file);
         if (!system.io.File.Exists(filepath))
         {
-            filepath = system.io.Path.Combine_String_String(g.XLSDIR, file);
+            filepath = psgg.HxFile.Combine_String_String(g.XLSDIR, file);
             if (!system.io.File.Exists(filepath))
             {
-                filepath = system.io.Path.Combine_String_String(g.GENDIR, file);
+                filepath = psgg.HxFile.Combine_String_String(g.GENDIR, file);
             }
         }
         var text:String = "";

@@ -174,6 +174,7 @@ namespace lib {
         {
             if (bFirst)
             {
+                SetEnd(true);
             }
             if (HasNextState())
             {
@@ -547,6 +548,7 @@ namespace lib {
         {
             if (bFirst)
             {
+                SetEnd(false);
             }
             if (!HasNextState())
             {

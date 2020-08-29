@@ -26,7 +26,7 @@ namespace lib.util
                 }
                 catch (SystemException e)
                 {
-                    Console.WriteLine("File Cannot read :" + filename +":" + e.Message);
+                    Console.WriteLine("{4F39CB16-1508-444A-A57B-63961C3ABFE4}\nFile Cannot read :" + filename +":");
                 }
             }
             m_default_macro_ht = (HT)psggItem.get_setting(wordstrage.Store.settingini_group_macro);//   SettingIniUtil.GetMacroHash();
@@ -74,7 +74,7 @@ namespace lib.util
 
             }
             catch (System.Exception e){
-                Console.WriteLine("File Cannot read :" + psggItem.GetGeneratedSourceFileName() + ":" + e.Message);
+                Console.WriteLine("{28F2C476-7C8B-4C75-8115-A5E543DABAB1}\nFile Cannot read :" + psggItem.GetGeneratedSourceFileName() );
             }
 
             
