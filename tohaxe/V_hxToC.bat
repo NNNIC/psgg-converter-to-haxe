@@ -21,7 +21,7 @@ del /f src\hx\SortUtil.hx 2>nul
 echo :
 echo : compile
 echo : 
-Haxe -p src\main -p src\hx   -m start.Program  --cpp out\c 
+Haxe -p src   -m start.Program  --cpp out\c 
 echo : done
 echo : 
 echo : run

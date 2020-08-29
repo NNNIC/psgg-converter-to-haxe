@@ -1,4 +1,4 @@
-&#xFEFF;null#include <stdio.h>
+&#xFEFF;null&#xFEFF;null#include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
 
