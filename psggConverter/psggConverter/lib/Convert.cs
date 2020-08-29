@@ -25,8 +25,8 @@ namespace lib
         public string COPYRIGHT() { return "2018 NNNIC / MIT Licence"; }
         public string DEPOT()     { return Ver.depot;      }
 
-        public int    NAME_COL     =2;
-        public int    STATE_ROW    =2;
+        public int    NAME_COL     = 2;
+        public int    STATE_ROW    = 2;
         public string NEWLINECHAR  = "\x0d\x0a";
         public string BASESTATE    = "basestate";
 

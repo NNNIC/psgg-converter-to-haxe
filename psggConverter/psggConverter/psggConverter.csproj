@@ -64,10 +64,14 @@
     <Compile Include="lib\util\CsvUtil.cs" />
     <Compile Include="lib\util\DictionaryUtil.cs" />
     <Compile Include="lib\util\IniUtil.cs" />
+    <Compile Include="lib\util\ListUtil.cs" />
+    <Compile Include="lib\util\MacroUtil.cs" />
     <Compile Include="lib\util\ParseUtil.cs" />
+    <Compile Include="lib\util\PathUtil.cs" />
     <Compile Include="lib\util\PsggDataFileUtil.cs" />
     <Compile Include="lib\util\RegexUtil.cs" />
     <Compile Include="lib\util\SortUtil.cs" />
+    <Compile Include="lib\util\StateUtil.cs" />
     <Compile Include="lib\util\StringUtil.cs" />
     <Compile Include="lib\ver.cs" />
     <Compile Include="lib\wordstrage\Store.cs" />

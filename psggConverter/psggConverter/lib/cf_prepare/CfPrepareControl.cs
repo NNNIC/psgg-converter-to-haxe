@@ -9,88 +9,91 @@ using lib.util;
 
 namespace lib
 {
-public partial class CfPrepareControl  {
-   
-    #region manager
-    Action<bool> m_curfunc;
-    Action<bool> m_nextfunc;
-
-    bool         m_noWait;
-    
-    public void Update()
+    public partial class CfPrepareControl
     {
-        while(true)
+
+        #region manager
+        Action<bool> m_curfunc;
+        Action<bool> m_nextfunc;
+
+        bool m_noWait;
+
+        public void Update()
         {
-            var bFirst = false;
-            if (m_nextfunc!=null)
+            while (true)
             {
-                m_curfunc = m_nextfunc;
-                m_nextfunc = null;
-                bFirst = true;
+                var bFirst = false;
+                if (m_nextfunc != null)
+                {
+                    m_curfunc = m_nextfunc;
+                    m_nextfunc = null;
+                    bFirst = true;
+                    //Console.WriteLine(m_curfunc.Method.Name);
+
+                }
+                m_noWait = false;
+                if (m_curfunc != null)
+                {
+                    m_curfunc(bFirst);
+                }
+                if (!m_noWait) break;
             }
-            m_noWait = false;
-            if (m_curfunc!=null)
-            {   
-                m_curfunc(bFirst);
-            }
-            if (!m_noWait) break;
         }
-    }
-    void Goto(Action<bool> func)
-    {
-        m_nextfunc = func;
-    }
-    bool CheckState(Action<bool> func)
-    {
-        return m_curfunc == func;
-    }
-    bool HasNextState()
-    {
-        return m_nextfunc != null;
-    }
-    void NoWait()
-    {
-        m_noWait = true;
-    }
-    #endregion
-    #region gosub
-    List<Action<bool>> m_callstack = new List<Action<bool>>();
-    void GoSubState(Action<bool> nextstate, Action<bool> returnstate)
-    {
-        m_callstack.Insert(0,returnstate);
-        Goto(nextstate);
-    }
-    void ReturnState()
-    {
-        var nextstate = m_callstack[0];
-        m_callstack.RemoveAt(0);
-        Goto(nextstate);
-    }
-    #endregion 
+        void Goto(Action<bool> func)
+        {
+            m_nextfunc = func;
+        }
+        bool CheckState(Action<bool> func)
+        {
+            return m_curfunc == func;
+        }
+        bool HasNextState()
+        {
+            return m_nextfunc != null;
+        }
+        void NoWait()
+        {
+            m_noWait = true;
+        }
+        #endregion
+        #region gosub
+        List<Action<bool>> m_callstack = new List<Action<bool>>();
+        void GoSubState(Action<bool> nextstate, Action<bool> returnstate)
+        {
+            m_callstack.Insert(0, returnstate);
+            Goto(nextstate);
+        }
+        void ReturnState()
+        {
+            var nextstate = m_callstack[0];
+            m_callstack.RemoveAt(0);
+            Goto(nextstate);
+        }
+        #endregion
 
-    public void Start()
-    {
-        Goto(S_START);
-    }
-    public bool IsEnd()     
-    { 
-        return CheckState(S_END); 
-    }
-    
-    public void Run()
-    {
-		int LOOPMAX = (int)(1E+5);
-		Start();
-		for(var loop = 0; loop <= LOOPMAX; loop++)
-		{
-			if (loop>=LOOPMAX) throw new SystemException("Unexpected.");
-			if (IsEnd()) break;
-			
-			Update();
-		}
-	}
+        public void Start()
+        {
+            Goto(S_START);
+        }
+        public bool IsEnd()
+        {
+            return CheckState(S_END);
+        }
 
-	#region    // [PSGG OUTPUT START] indent(8) $/./$
+        public void Run()
+        {
+            int LOOPMAX = (int)(1E+5);
+            Start();
+            for (var loop = 0; loop <= LOOPMAX; loop++)
+            {
+                if (loop >= LOOPMAX) throw new SystemException("Unexpected.");
+                if (IsEnd()) break;
+
+                Update();
+            }
+        }
+
+        #region    // [PSGG OUTPUT START] indent(8) $/./$
         //             psggConverterLib.dll converted from psgg-file:CfPrepareControl.psgg
 
         /*
@@ -649,34 +652,34 @@ public partial class CfPrepareControl  {
         }
 
 
-	#endregion // [PSGG OUTPUT END]
+        #endregion // [PSGG OUTPUT END]
 
-	// write your code below
+        // write your code below
 
-	//bool m_bYesNo;
-	
-	//void br_YES(Action<bool> st)
-	//{
-	//	if (!HasNextState())
-	//	{
-	//		if (m_bYesNo)
-	//		{
-	//			Goto(st);
-	//		}
-	//	}
-	//}
+        //bool m_bYesNo;
 
-	//void br_NO(Action<bool> st)
-	//{
-	//	if (!HasNextState())
-	//	{
-	//		if (!m_bYesNo)
-	//		{
-	//			Goto(st);
-	//		}
-	//	}
-	//}
-}
+        //void br_YES(Action<bool> st)
+        //{
+        //	if (!HasNextState())
+        //	{
+        //		if (m_bYesNo)
+        //		{
+        //			Goto(st);
+        //		}
+        //	}
+        //}
+
+        //void br_NO(Action<bool> st)
+        //{
+        //	if (!HasNextState())
+        //	{
+        //		if (!m_bYesNo)
+        //		{
+        //			Goto(st);
+        //		}
+        //	}
+        //}
+    }
 }
 
 /*  :::: PSGG MACRO ::::

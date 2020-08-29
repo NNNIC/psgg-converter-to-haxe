@@ -82,6 +82,7 @@ namespace lib
                 var r = new lib.RefListString();
                 r.list = m_lines;
                 m_needAgain = G.createFunc_prepare(m_state, r/*ref m_lines*/);
+                m_lines = r.list;
             }
             catch (SystemException e)
             {
@@ -98,6 +99,7 @@ namespace lib
                 var r = new lib.RefListString();
                 r.list = m_lines;
                 m_needAgain = G.createFunc_work(m_state, r/*ref m_lines*/);
+                m_lines = r.list;
             }
             catch (SystemException e)
             {

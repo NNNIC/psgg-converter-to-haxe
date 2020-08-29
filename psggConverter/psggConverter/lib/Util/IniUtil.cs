@@ -22,7 +22,7 @@ namespace lib.util
     {
 
         #region basic
-        public static string GetValue(string key, string initext)
+        public static object GetValue(string key, string initext)
         {
             var ht = CreateHashtable(initext);
             return GetValueFromHashtable(key, ht);
@@ -32,11 +32,11 @@ namespace lib.util
             var ht = CreateHashtable(initext);
             return GetValueFromHashtable(category, key, ht);
         }
-        public static string GetValueFromHashtable(string key, HT ht)
+        public static object GetValueFromHashtable(string key, HT ht)
         {
             if (ht.ContainsKey(key))
             {
-                return ht[key].ToString();
+                return ht[key];
             }
             return null;
         }
@@ -45,7 +45,7 @@ namespace lib.util
             var val = GetValueFromHashtable(key, ht);
             if (val == null) return error;
             var o = (double)0;
-            if (double.TryParse(val, out o))
+            if (double.TryParse(val.ToString(), out o))
             {
                 return o;
             }
