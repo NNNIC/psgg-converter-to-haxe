@@ -1,3 +1,4 @@
+import haxe.io.BytesBuffer;
 import haxe.macro.Expr.Binop;
 import haxe.io.Bytes;
 import sys.io.File;
@@ -26,16 +27,23 @@ class PsggFile {
         return ReadUTF8(path);
     }
     public static function WriteUTF8(path:String, buf:String, bom:Bool) {
-        var bom = StringTools.htmlUnescape("&#xFEFF;");
-        var ibuf = buf;
-        if (ibuf!=null && ibuf.charCodeAt(0) != 0xFEFF) {
-            ibuf = bom + ibuf;
+        var data = Bytes.ofString(buf);
+        var databuf = new BytesBuffer();
+        if (bom) {
+            databuf.addByte(0xef);
+            databuf.addByte(0xbb);
+            databuf.addByte(0xbf);
         }
-        var data = Bytes.ofString(ibuf);
-        File.saveBytes(path,data);
+        databuf.add(data);
+
+        File.saveBytes(path,databuf.getBytes());
     }
 
     public static function WriteASCII(path:String, buf:String) {
         WriteUTF8(path,buf,false);
+    }
+
+    public static  function ReadAllBytes(path:String) : Bytes {
+        return File.getBytes(path);
     }
 }

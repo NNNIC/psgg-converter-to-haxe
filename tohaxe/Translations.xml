@@ -4,6 +4,7 @@
 
   <Method SourceObject="System.IO.File" Match="ReadAllText" ExtensionNamespace="psgg.HxFile" SkipExtensionParameter="true"/>
   <Method SourceObject="System.IO.File" Match="WriteAllText" ExtensionNamespace="psgg.HxFile" SkipExtensionParameter="true"/>
+  <Method SourceObject="System.IO.File" Match="ReadAllBytes" ExtensionNamespace="psgg.HxFile" SkipExtensionParameter="true"/>
 
   <Method SourceObject="System.IO.Path" Match="GetFullPath" ExtensionNamespace="psgg.HxFile" SkipExtensionParameter="true"/>
   <Method SourceObject="System.IO.Path" Match="Combine" ExtensionNamespace="psgg.HxFile" SkipExtensionParameter="true"/>

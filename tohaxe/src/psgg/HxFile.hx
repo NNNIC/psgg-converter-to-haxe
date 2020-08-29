@@ -21,7 +21,9 @@ class HxFile {
         var bom = HxEncoding.ISUTF8Encoding_with_bom(enc);
         PsggFile.WriteUTF8(path,buf,bom);
     }
-
+    public static  function ReadAllBytes(path:String) :haxe.io.Bytes {
+        return PsggFile.ReadAllBytes(path);
+    }
     public static function GetFullPath(path: String) : String {
         return FileSystem.absolutePath(path);
     }

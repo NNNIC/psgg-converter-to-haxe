@@ -20,4 +20,5 @@ G:\statego\psgg-converter-to-haxe\psggConverter\psggConverter\bin\Debug\psggConv
 G:\statego\psgg-converter-to-haxe\psggConverter\psggConverter\bin\Debug\psggConverter.pdb
 G:\statego\psgg-converter-to-haxe\psggConverter\psggConverter\obj\Debug\psggConverter.exe
 G:\statego\psgg-converter-to-haxe\psggConverter\psggConverter\obj\Debug\psggConverter.pdb
-G:\statego\psgg-converter-to-haxe\psggConverter\psggConverter\obj\Debug\psggConverter.csprojResolveAssemblyReference.cache
+G:\statego\psgg-converter-to-haxe\psggConverter\psggConverter\obj\Debug\psggConverter.csprojAssemblyReference.cache
+G:\statego\psgg-converter-to-haxe\psggConverter\psggConverter\obj\Debug\psggConverter.csproj.CoreCompileInputs.cache

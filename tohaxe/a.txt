@@ -1,4 +1,4 @@
-src/start/Program.hx:9: #0. call Convert
+﻿src/start/Program.hx:9: #0. call Convert
 src/system/Console.hx:13: psggConvertLib TEST
 src/system/Console.hx:13: ---------
 src/system/Console.hx:13: a = c:\vv\g\q\n
@@ -26,3 +26,4 @@ src/system/Console.hx:13: b = C:\vv
 src/system/Console.hx:13: r = vv
 src/system/Console.hx:13: check = c:\\vv
 src/system/Console.hx:13: psggConvertLib TEST
+Error : [file_open,G:\statego\psgg-converter-to-haxe\tohaxe\testdata\c\.\TestControl.c]

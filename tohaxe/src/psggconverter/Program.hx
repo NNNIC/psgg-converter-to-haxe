@@ -26,8 +26,16 @@ class Program
         rtest("c:\\", "C:\\vv");
         var p:lib.Convert = new lib.Convert();
         p.TEST();
-        var psggfile:String = "G:\\statego\\psgg-converter-to-haxe\\tohaxe\\testdata\\c\\TestControl.psgg";
-        var psggdir:String = "G:\\statego\\psgg-converter-to-haxe\\tohaxe\\testdata\\c";
+        var psggfile:String = "";
+        if (args != null && args.length > 0)
+        {
+            psggfile = args[0];
+        }
+        else
+        {
+            psggfile = "G:\\statego\\psgg-converter-to-haxe\\tohaxe\\testdata\\c\\TestControl.psgg";
+        }
+        var psggdir:String = psgg.HxFile.GetDirectoryName(psggfile);
         var item:lib.util.PsggDataFileUtil_Item = lib.util.PsggDataFileUtil.ReadPsgg(psggfile);
         p.COMMENTLINE_FORMAT = item.get_setting_String_String("macro", "commentline");
         p.template_src = item.m_tmpsrc;

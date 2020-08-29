@@ -21,22 +21,24 @@ namespace lib
             //System.Diagnostics.Debugger.Break();
             try
             {
-                m_enc = Encoding.UTF8;
+                m_enc = null; //Haxeへの変換で UTF8との比較が不正になるため、nullを途中まで UTF8の意味として、最後にインスタンスする
+                var bom = false;
                 if (!string.IsNullOrEmpty(G.ENC))
                 {
-                    try
+                    if (G.ENC != "utf-8")
                     {
-                        m_enc = Encoding.GetEncoding(G.ENC);
-                    }
-                    catch (SystemException e)
-                    {
-                        m_error = "Error Encoding :" + e.Message;
-                        m_enc = Encoding.UTF8;
+                        try
+                        {
+                            m_enc = Encoding.GetEncoding(G.ENC);
+                        }
+                        catch (SystemException e)
+                        {
+                            m_error = "Error Encoding :" + e.Message;
+                        }
                     }
                 }
-                if (m_enc == Encoding.UTF8)
+                if (m_enc == null)
                 {
-                    var bom = false;
                     var bytes = File.ReadAllBytes(m_filepath);
                     if (bytes.Length > 3)
                     {
@@ -45,6 +47,10 @@ namespace lib
                             bom = true;
                         }
                     }
+                }
+
+                if (m_enc == null)
+                {
                     m_enc = new UTF8Encoding(bom);
                 }
 
@@ -142,10 +148,10 @@ namespace lib
 
         void save()
         {
-            string s = null;
+            string s = "";
             foreach (var l in m_lines)
             {
-                if (s != null)
+                if (!string.IsNullOrEmpty(s))
                 {
                     s += m_bl;
                 }

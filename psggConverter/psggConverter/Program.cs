@@ -37,8 +37,17 @@ namespace psggConverter
             var p = new lib.Convert();
             p.TEST();
 
-            var psggfile = @"G:\statego\psgg-converter-to-haxe\tohaxe\testdata\c\TestControl.psgg";
-            var psggdir =  @"G:\statego\psgg-converter-to-haxe\tohaxe\testdata\c";//Path.GetDirectoryName(psggfile);
+            
+            var psggfile = @"";
+            if (args != null && args.Length > 0)
+            {
+                psggfile = args[0];
+            }
+            else
+            {
+                psggfile = @"G:\statego\psgg-converter-to-haxe\tohaxe\testdata\c\TestControl.psgg";
+            }
+            var psggdir =  Path.GetDirectoryName(psggfile);
             var item = lib.util.PsggDataFileUtil.ReadPsgg(psggfile);
             p.COMMENTLINE_FORMAT = item.get_setting("macro", "commentline");
             p.template_src = item.m_tmpsrc;

@@ -11,23 +11,25 @@ class InsertCodeControl extends lib.StateManager
     {
         try
         {
-            m_enc = system.text.Encoding.UTF8;
+            m_enc = null;
+            var bom:Bool = false;
             if (!system.Cs2Hx.IsNullOrEmpty(G.ENC))
             {
-                try
+                if (G.ENC != "utf-8")
                 {
-                    m_enc = psgg.HxEncoding.GetEncoding_String(G.ENC);
-                }
-                catch (e:system.SystemException)
-                {
-                    m_error = "Error Encoding :" + system.Cs2Hx.NullCheck(e.Message);
-                    m_enc = system.text.Encoding.UTF8;
+                    try
+                    {
+                        m_enc = psgg.HxEncoding.GetEncoding_String(G.ENC);
+                    }
+                    catch (e:system.SystemException)
+                    {
+                        m_error = "Error Encoding :" + system.Cs2Hx.NullCheck(e.Message);
+                    }
                 }
             }
-            if (m_enc == system.text.Encoding.UTF8)
+            if (m_enc == null)
             {
-                var bom:Bool = false;
-                var bytes:haxe.io.Bytes = system.io.File.ReadAllBytes(m_filepath);
+                var bytes:haxe.io.Bytes = psgg.HxFile.ReadAllBytes(m_filepath);
                 if (bytes.length > 3)
                 {
                     if ((bytes.get(0) == 0xef) && (bytes.get(1) == 0xbb) && (bytes.get(2) == 0xbf))
@@ -35,6 +37,9 @@ class InsertCodeControl extends lib.StateManager
                         bom = true;
                     }
                 }
+            }
+            if (m_enc == null)
+            {
                 m_enc = new psgg.HxUTF8Encoding(bom);
             }
             m_src = psgg.HxFile.ReadAllText_String_Encoding(m_filepath, m_enc);
@@ -131,10 +136,10 @@ class InsertCodeControl extends lib.StateManager
     }
     function save():Void
     {
-        var s:String = null;
+        var s:String = "";
         for (l in m_lines)
         {
-            if (s != null)
+            if (!system.Cs2Hx.IsNullOrEmpty(s))
             {
                 s += m_bl;
             }

@@ -10,7 +10,7 @@ class Program {
         var p = new Convert();
         p.TEST();
 
-        psggconverter.Program.Main(null);
+        psggconverter.Program.Main(Sys.args());
 
     }
 }
