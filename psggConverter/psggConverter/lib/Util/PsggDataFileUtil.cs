@@ -95,7 +95,8 @@ namespace lib.util
                     return name;
                 }
 
-                return get_val(state, name);
+                var v = get_val(state, name);
+                return v;
             }
             public string get_chart(string group, string key) {
                 chart_init();
@@ -158,7 +159,8 @@ namespace lib.util
                 {
                     return null;
                 }
-                return get_chart(sid, nid);
+                var v = get_chart(sid, nid);
+                return v;
             }
             //
             public string GetGeneratedSource(string doc_path)

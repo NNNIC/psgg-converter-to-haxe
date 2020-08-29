@@ -275,6 +275,7 @@ namespace lib.util
                 // return new List<string>() { tmp };
                 var p = new List<string>();
                 p.Add(tmp);
+                return p;
             }
             /*
                 複数行
