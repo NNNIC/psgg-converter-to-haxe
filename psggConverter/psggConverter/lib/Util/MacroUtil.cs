@@ -21,7 +21,8 @@ namespace lib.util
             { 
                 try
                 {
-                    var text = File.ReadAllText(filename, Encoding.UTF8);
+                    var path = Path.Combine(psggItem.GetIncDir(doc_path), filename);
+                    var text = File.ReadAllText(path, Encoding.UTF8);
                     m_macro_ini_ht      = IniUtil.CreateHashtable(text);
                 }
                 catch (SystemException e)
@@ -34,7 +35,9 @@ namespace lib.util
             try
             {   //生成ソース内の マクロを収集する。 
                 var macroinitext = string.Empty;
-                var text = psggItem.GetGeneratedSource(doc_path);
+                var path = psggItem.GetGeneratedSource(doc_path);
+                var enc = string.IsNullOrEmpty(psggItem.GetSrcEnc()) ? Encoding.UTF8 : Encoding.GetEncoding(psggItem.GetSrcEnc());
+                var text = File.ReadAllText(path, enc);
                 var lines = text.Split('\xa');
 
                 bool bInMacro = false;

@@ -14,7 +14,7 @@ class PathUtil
         var _abs:(String -> String) = function (s:String):String
         {
             var s2:String = psgg.HxFile.GetFullPath(s);
-            var s3:String = s2.toLowerCase();
+            var s3:String = s2;
             if (s3.length > 3 && s3.charCodeAt(s3.length - 1) == 92)
             {
                 s3 = s3.substr(0, s3.length - 1);

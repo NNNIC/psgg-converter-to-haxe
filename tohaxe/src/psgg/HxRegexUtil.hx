@@ -25,11 +25,11 @@ class HxRegexUtil
         var cnt = 0;
         var r = new EReg(regexstr,"m");
         while(r.match(input)) {
+            cnt++;
             if (n == cnt) {
                 return r.matched(0);
             }
             input = r.matchedRight();
-            cnt++;
         }
         return null;
     }

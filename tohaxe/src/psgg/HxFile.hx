@@ -1,5 +1,6 @@
 package psgg;
 
+import haxe.io.Path;
 import sys.FileSystem;
 import sys.io.File;
 
@@ -25,7 +26,9 @@ class HxFile {
         return PsggFile.ReadAllBytes(path);
     }
     public static function GetFullPath(path: String) : String {
-        return FileSystem.absolutePath(path);
+        var abspath = FileSystem.absolutePath(path);
+        var normalpath = Path.normalize(abspath);
+        return normalpath;
     }
     public static function Combine_String_String(path1:String, path2:String) : String {
         var p2h = path2.charAt(0);

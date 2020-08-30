@@ -18,7 +18,7 @@ namespace lib.util
 
             Func<string, string> _abs = (s) => {
                 var s2 = Path.GetFullPath(s);
-                var s3 = s2.ToLower();
+                var s3 = s2;
                 if (s3.Length > 3 && s3[s3.Length - 1] == '\\')
                 {
                     s3 = s3.Substring(0, s3.Length - 1);

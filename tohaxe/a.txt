@@ -1,29 +1,3 @@
-﻿src/start/Program.hx:9: #0. call Convert
-src/system/Console.hx:13: psggConvertLib TEST
-src/system/Console.hx:13: ---------
-src/system/Console.hx:13: a = c:\vv\g\q\n
-src/system/Console.hx:13: b = C:\vv\d
-src/system/Console.hx:13: r = ..\..\..\d
-src/system/Console.hx:13: check = c:\vv\g\q\n\..\..\..\d
-src/system/Console.hx:13: ---------
-src/system/Console.hx:13: a = c:\vv\g\q\n
-src/system/Console.hx:13: b = C:\vv\g\x.c
-src/system/Console.hx:13: r = ..\..\x.c
-src/system/Console.hx:13: check = c:\vv\g\q\n\..\..\x.c
-src/system/Console.hx:13: ---------
-src/system/Console.hx:13: a = c:\vv\g\q
-src/system/Console.hx:13: b = C:\vv\d
-src/system/Console.hx:13: r = ..\..\d
-src/system/Console.hx:13: check = c:\vv\g\q\..\..\d
-src/system/Console.hx:13: ---------
-src/system/Console.hx:13: a = c:\vv\
-src/system/Console.hx:13: b = C:\vv\x
-src/system/Console.hx:13: r = x
-src/system/Console.hx:13: check = c:\vv\\x
-src/system/Console.hx:13: ---------
-src/system/Console.hx:13: a = c:\
-src/system/Console.hx:13: b = C:\vv
-src/system/Console.hx:13: r = vv
-src/system/Console.hx:13: check = c:\\vv
-src/system/Console.hx:13: psggConvertLib TEST
-Error : [file_open,G:\statego\psgg-converter-to-haxe\tohaxe\testdata\c\.\TestControl.c]
+src/start/Program.hx:9: #0. call Convert from null
+src/system/Console.hx:13: input : G:\statego\psgg-converter-to-haxe\tohaxe\testdata-tmp\php\FizzBuzzControl.psgg
+src/system/Console.hx:13: output: G:/statego/psgg-converter-to-haxe/tohaxe/testdata-tmp/php/FizzBuzzControl.php

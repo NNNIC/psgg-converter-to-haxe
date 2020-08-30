@@ -12,7 +12,7 @@ pub mod hoge_control {
         #[allow(non_camel_case_types)]
         None,
         //    [STATEGO OUTPUT START] indent(8) $/^S_/->#enums$
-        //             psggConverterLib.dll converted from psgg-file:..\hoge_control.psgg
+        //             psggConverterLib.dll converted from psgg-file:hoge_control.psgg
 
         #[allow(non_camel_case_types)]
             S_0001,
@@ -54,7 +54,7 @@ pub mod hoge_control {
     }
 
     //    [STATEGO OUTPUT START] indent(4) $/^E_/->#ins_embed$
-    //             psggConverterLib.dll converted from psgg-file:..\hoge_control.psgg
+    //             psggConverterLib.dll converted from psgg-file:hoge_control.psgg
 
     /*
         E_0000
@@ -77,7 +77,7 @@ pub mod hoge_control {
         m_callstack_level: usize,
 
         //    [STATEGO OUTPUT START] indent(8) $/^S_/->#def_members$
-        //             psggConverterLib.dll converted from psgg-file:..\hoge_control.psgg
+        //             psggConverterLib.dll converted from psgg-file:hoge_control.psgg
 
         m_cnt: i32,
         m_loopindex : i32,
@@ -96,7 +96,7 @@ pub mod hoge_control {
                 m_callstack: [State::None; MAX_CALL_STACK],
                 m_callstack_level: 0,
                 //    [STATEGO OUTPUT START] indent(16) $/^S_/->#ini_members$
-                //             psggConverterLib.dll converted from psgg-file:..\hoge_control.psgg
+                //             psggConverterLib.dll converted from psgg-file:hoge_control.psgg
 
                 m_cnt: 0,
                 m_loopindex: 0,
@@ -145,7 +145,7 @@ pub mod hoge_control {
                 if self.m_cur != State::None {
                     match self.m_cur {
                         //    [STATEGO OUTPUT START] indent(24) $/^S_/->#matches$
-                        //             psggConverterLib.dll converted from psgg-file:..\hoge_control.psgg
+                        //             psggConverterLib.dll converted from psgg-file:hoge_control.psgg
 
                         State::S_0001 => self.S_0001(),
                         State::S_0002 => self.S_0002(),
@@ -193,7 +193,7 @@ pub mod hoge_control {
         }
 
         //    [STATEGO OUTPUT START] indent(8) $/^S_/$
-        //             psggConverterLib.dll converted from psgg-file:..\hoge_control.psgg
+        //             psggConverterLib.dll converted from psgg-file:hoge_control.psgg
 
         /*
             S_0001
@@ -236,6 +236,8 @@ pub mod hoge_control {
             let num = rand(1000);
             let b = (num % 2) == 0;
             println!("rand num={}", num);
+            if b { self.goto( State::S_0004 ); }
+            else { self.goto( State::S_0005 ); }
         }
         /*
             S_0004

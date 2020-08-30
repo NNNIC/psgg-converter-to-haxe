@@ -460,6 +460,7 @@ namespace lib
                         var idx = s.IndexOf("->@");
                         var newname = s.Substring(0,idx);
                         name = newname.TrimStart('['); 
+                        name = name.TrimStart('['); //for Haxe  一文字しか消さないから
                     }
                 }
                 if (string.IsNullOrEmpty(name))

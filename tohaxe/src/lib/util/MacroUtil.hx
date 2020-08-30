@@ -15,7 +15,8 @@ class MacroUtil
         {
             try
             {
-                var text:String = psgg.HxFile.ReadAllText_String_Encoding(filename, system.text.Encoding.UTF8);
+                var path:String = psgg.HxFile.Combine_String_String(psggItem.GetIncDir(doc_path), filename);
+                var text:String = psgg.HxFile.ReadAllText_String_Encoding(path, system.text.Encoding.UTF8);
                 m_macro_ini_ht = lib.util.IniUtil.CreateHashtable(text);
             }
             catch (e:system.SystemException)
@@ -27,7 +28,9 @@ class MacroUtil
         try
         {
             var macroinitext:String = "";
-            var text:String = psggItem.GetGeneratedSource(doc_path);
+            var path:String = psggItem.GetGeneratedSource(doc_path);
+            var enc:system.text.Encoding = system.Cs2Hx.IsNullOrEmpty(psggItem.GetSrcEnc()) ? system.text.Encoding.UTF8 : psgg.HxEncoding.GetEncoding_String(psggItem.GetSrcEnc());
+            var text:String = psgg.HxFile.ReadAllText_String_Encoding(path, enc);
             var lines:Array<String> = system.Cs2Hx.Split(text, [ 10 ]);
             var bInMacro:Bool = false;
             for (l in lines)

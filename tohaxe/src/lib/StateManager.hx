@@ -5,7 +5,7 @@ import anonymoustypes.*;
 
 class StateManager
 {
-    var m_curfunc:(Bool -> Void);
+    public var m_curfunc:(Bool -> Void);
     var m_nextfunc:(Bool -> Void);
     var m_tempfunc:(Bool -> Void);
     var m_noWait:Bool = false;
@@ -24,6 +24,7 @@ class StateManager
             m_noWait = false;
             if (m_curfunc != null)
             {
+                _debug_point(bFirst);
                 m_curfunc(bFirst);
             }
             if (!m_noWait)
@@ -31,6 +32,9 @@ class StateManager
                 break;
             }
         }
+    }
+    public function _debug_point(b:Bool):Void
+    {
     }
     public function Goto(func:(Bool -> Void)):Void
     {

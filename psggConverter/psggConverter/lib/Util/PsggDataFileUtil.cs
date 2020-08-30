@@ -161,6 +161,11 @@ namespace lib.util
             }
             private string get_val(string state, string name)
             {
+                if (string.IsNullOrEmpty(state) || string.IsNullOrEmpty(name))
+                {
+                    return null;
+                }
+
                 var sid = DictionaryUtil.Get(m_state_dic, state);
                 var nid = DictionaryUtil.Get(m_name_dic, name);
                 if (nid == null || sid == null)

@@ -9,8 +9,10 @@ class HxSortUtil
         var l2=l.copy();
         l2.sort( 
             function(a:String, b:String):Int {
-                if (a<b) return - 1;
-                if (a>b) return 1;
+                var a2 = a.toLowerCase();
+                var b2 = b.toLowerCase();
+                if (a2<b2) return - 1;
+                if (a2>b2) return 1;
                 return 0;
             }
         );

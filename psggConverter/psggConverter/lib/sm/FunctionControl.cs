@@ -8,6 +8,14 @@ namespace lib
 {
     public partial class FunctionControl
     {
+        //public override void _debug_point(bool b)
+        //{
+        //    if (b)
+        //    {
+        //        Console.WriteLine(m_curfunc.Method.Name);
+        //    }
+        //}
+
 
         public lib.Convert G;
         public string m_state;

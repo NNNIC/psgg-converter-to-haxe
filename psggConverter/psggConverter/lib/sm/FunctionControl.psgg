@@ -350,7 +350,6 @@ itemeditform_size_list=@@@
 decoimage_typ_name=@@@
 sym
 @@@
-
 ###VARIOUS-CONTENTS-END###
 
 
@@ -427,6 +426,7 @@ void [[state]](bool bFirst)
 sheet=setting.ini
 
 ###VARIOUS-CONTENTS-BEGIN###
+
 [setting]
 
 converter=psggConverterLib.dll
@@ -444,21 +444,28 @@ template_func=template-statefunc.txt
 
 help=help.ini
 
+
 [setupinfo]
 
 lang=c#
-framework=
+framework=vs2019
 
 prefix=Function
-xlsdir=C:\Users\gea01\Documents\psgg\psgg-converter\psggConverter\psggConverterLib\sm
-gendir=C:\Users\gea01\Documents\psgg\psgg-converter\psggConverter\psggConverterLib\sm
+xlsdir=@@@
+C:\Users\gea01\Documents\psgg\psgg-converter\psggConverter\psggConverterLib\sm
+@@@
+
+gendir=@@@
+C:\Users\gea01\Documents\psgg\psgg-converter\psggConverter\psggConverterLib\sm
+@@@
+
 genrdir=.
 
 [jpn]
+
 title=C# サンプル 1
 
 detail=@@@
-
 C# 用のステートマシンを作成します。
 
 # ドキュメント用フォルダ
@@ -497,7 +504,9 @@ C# 用のステートマシンを作成します。
 @@@
 
 
+
 [en]
+
 title=C# Sample 1
 
 detail=@@@
@@ -537,6 +546,8 @@ NOTE : If the same name files exists, the file will not be created.
 
 Wrote 2018.7.7
 @@@
+
+
 ###VARIOUS-CONTENTS-END###
 
 

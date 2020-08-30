@@ -440,6 +440,7 @@ class Convert
                     var idx:Int = s.indexOf("->@");
                     var newname:String = s.substr(0, idx);
                     name = system.Cs2Hx.TrimStart(newname, [ 91 ]);
+                    name = system.Cs2Hx.TrimStart(name, [ 91 ]);
                 }
             }
             if (system.Cs2Hx.IsNullOrEmpty(name))

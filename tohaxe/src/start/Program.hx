@@ -6,9 +6,9 @@ class Program {
     public static function main() {
         VConstructors.init();
 
-        trace("#0. call Convert");
-        var p = new Convert();
-        p.TEST();
+        trace("#0. call Convert from " + Sys.args()[0]);
+        // var p = new Convert();
+        // p.TEST();
 
         psggconverter.Program.Main(Sys.args());
 

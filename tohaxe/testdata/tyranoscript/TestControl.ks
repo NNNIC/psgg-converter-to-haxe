@@ -13,7 +13,8 @@
 [jump target=*S_START]
 
 ; [SYN-G-GEN OUTPUT START]  indent(0) $/./$
-;  psggConverterLib.dll converted from TestControl.xlsx.    psgg-file:TestControl.psgg
+;             psggConverterLib.dll converted from psgg-file:TestControl.psgg
+
 ;------------------------------
 ;    S_ABOUT_LOOP
 ;

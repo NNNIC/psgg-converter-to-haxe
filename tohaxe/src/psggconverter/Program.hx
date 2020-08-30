@@ -19,13 +19,7 @@ class Program
             system.Console.WriteLine("check = " + system.Cs2Hx.NullCheck(fabs));
         }
         ;
-        rtest("c:\\vv\\g\\q\\n", "C:\\vv\\d");
-        rtest("c:\\vv\\g\\q\\n", "C:\\vv\\g\\x.c");
-        rtest("c:\\vv\\g\\q", "C:\\vv\\d");
-        rtest("c:\\vv\\", "C:\\vv\\x");
-        rtest("c:\\", "C:\\vv");
         var p:lib.Convert = new lib.Convert();
-        p.TEST();
         var psggfile:String = "";
         if (args != null && args.length > 0)
         {
@@ -33,7 +27,7 @@ class Program
         }
         else
         {
-            psggfile = "G:\\statego\\psgg-converter-to-haxe\\tohaxe\\testdata\\c\\TestControl.psgg";
+            psggfile = "G:\\statego\\psgg-converter-to-haxe\\tohaxe\\testdata-tmp\\php\\FizzBuzzControl.psgg";
         }
         var psggdir:String = psgg.HxFile.GetDirectoryName(psggfile);
         var item:lib.util.PsggDataFileUtil_Item = lib.util.PsggDataFileUtil.ReadPsgg(psggfile);
@@ -61,7 +55,21 @@ class Program
         var genfile:String = item.GetGeneratedSource(psggdir);
         var psggrelfile:String = lib.util.PathUtil.GetRelativePath(psgg.HxFile.GetDirectoryName(genfile), psggfile);
         p.PSGGFILE = psggrelfile;
-        p.InsertOutputToFile(psggfile, item.GetGeneratedSource(psggdir), item.GetIncDir(psggdir));
+        if (Cs2Hx.IsNullOrWhiteSpace(system.Cs2Hx.Trim(item.m_tmpsrc)))
+        {
+            system.Console.WriteLine("input : " + system.Cs2Hx.NullCheck(psggfile));
+            var macrofile:String = item.get_setting_String_String(lib.wordstrage.Store.settingini_group_setting, lib.wordstrage.Store.settingini_setting_macroini);
+            if (!system.Cs2Hx.IsNullOrEmpty(macrofile))
+            {
+                system.Console.WriteLine("macro : " + system.Cs2Hx.NullCheck(psgg.HxFile.Combine_String_String(p.INCDIR, macrofile)));
+            }
+            system.Console.WriteLine("output: " + system.Cs2Hx.NullCheck(item.GetGeneratedSource(psggdir)));
+            p.InsertOutputToFile(psggfile, item.GetGeneratedSource(psggdir), item.GetIncDir(psggdir));
+        }
+        else
+        {
+            system.Console.WriteLine("!!!!!!!!!!!!!! Not supported separated sources. !!!!!!!!!!!!!!!!!");
+        }
     }
     public function new()
     {

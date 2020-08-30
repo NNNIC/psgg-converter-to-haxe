@@ -153,6 +153,10 @@ class PsggDataFileUtil_Item
     }
     private function get_val(state:String, name:String):String
     {
+        if (system.Cs2Hx.IsNullOrEmpty(state) || system.Cs2Hx.IsNullOrEmpty(name))
+        {
+            return null;
+        }
         var sid:String = lib.util.DictionaryUtil.Get(m_state_dic, state);
         var nid:String = lib.util.DictionaryUtil.Get(m_name_dic, name);
         if (nid == null || sid == null)

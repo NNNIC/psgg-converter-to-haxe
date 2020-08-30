@@ -29,7 +29,7 @@ namespace lib
                     m_curfunc = m_nextfunc;
                     m_nextfunc = null;
                     bFirst = true;
-                    //Console.WriteLine(m_curfunc.Method.Name);
+                    //Console.WriteLine("Cfp:"+m_curfunc.Method.Name);
 
                 }
                 m_noWait = false;

@@ -3,7 +3,7 @@ namespace lib
 {
     public class StateManager
     {
-        Action<bool> m_curfunc;
+        protected Action<bool> m_curfunc;
         Action<bool> m_nextfunc;
         Action<bool> m_tempfunc;
 
@@ -25,11 +25,15 @@ namespace lib
                 m_noWait = false;
                 if (m_curfunc != null)
                 {
+                    _debug_point(bFirst);
                     m_curfunc(bFirst);
                 }
                 if (!m_noWait) break;
             }
         }
+
+        public virtual void _debug_point(bool b)
+        {}
         public void Goto(Action<bool> func)
         {
             m_nextfunc = func;

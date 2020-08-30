@@ -6,6 +6,11 @@ class HxString {
 
     }
     public static function Format(fmt:String,  plist:Array<String> ) : String { 
-        return "";
+        var s = fmt;
+        for(i in 0...plist.length) {
+            var sub = "{" + i + "}";
+            s = StringTools.replace(s,sub,plist[i]);
+        }
+        return s;
     }
 }
